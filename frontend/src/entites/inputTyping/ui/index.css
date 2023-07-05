@@ -1,0 +1,25 @@
+#input_typing {
+
+    width: 100%;
+    margin: 10px 0;
+
+    border-bottom: 1px solid var(--secondary-color);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+
+    transition:
+        background-color .2s linear,
+        color .2s linear;
+
+}
+
+.input_valid {
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+.input_invalid {
+    background-color: var(--invalid-value-color);
+    color: var(--primary-color);
+}
