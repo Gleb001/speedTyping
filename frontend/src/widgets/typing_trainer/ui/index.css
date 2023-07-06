@@ -28,3 +28,14 @@
 .disabled_text {
     color: var(--primary-additional-color);
 }
+
+/* tool line */
+#tool_line {
+
+    margin: 17.5px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+}

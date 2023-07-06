@@ -1,5 +1,6 @@
 // imports =================================================== //
 const path = require("path");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 // constants ================================================= //
 const PATHS = {
@@ -15,6 +16,9 @@ const PATHS = {
     "@hooks": path.resolve(
         __dirname, "./src/shared/hooks"
     ),
+    "src/": path.resolve(
+        __dirname, "./src"
+    )
 };
 
 // export ==================================================== //
@@ -23,7 +27,6 @@ module.exports = {
     watchOptions: { ignored: "**/node_modules" },
     entry: path.resolve(__dirname, "./src/index.tsx"),
     stats: { errorDetails: true }, // ?
-    // optimization: { splitChunks: { chunks: "all", } }, // ?
     module: {
         rules: [
             {
@@ -40,6 +43,13 @@ module.exports = {
             },
         ]
     },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: path.resolve(
+                __dirname, "./src/index.html"
+            )
+        })
+    ],
     resolve: {
         extensions: [ ".js", ".jsx", ".ts", ".tsx" ],
         alias: PATHS
