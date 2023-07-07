@@ -1,8 +1,8 @@
 // imports =================================================== //
-// libs
+// external
 import React from "react";
 import { Route, Routes } from "react-router";
-// components
+// internal
 import HomePage from "./home";
 
 // main ====================================================== //

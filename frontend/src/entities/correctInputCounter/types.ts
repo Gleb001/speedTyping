@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type totalSpeedType = FC<{ }>
+type CorrectInputCounterType = FC<{ }>
 
 // export ==================================================== //
-export { totalSpeedType };
+export { CorrectInputCounterType };

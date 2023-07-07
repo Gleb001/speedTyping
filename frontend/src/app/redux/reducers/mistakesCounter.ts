@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // main ====================================================== //
 let currentSymbolSlice = createSlice({
-    name: "check-point",
+    name: "mistakes-counter",
     initialState: 0,
     reducers: {
         increment: (state) => state + 1,
-        reset: () => 0,
+        reset: () => 0
     }
 });
 

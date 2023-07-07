@@ -1,18 +1,15 @@
 // imports =================================================== //
-// libs
+// external
 import { configureStore } from "@reduxjs/toolkit";
-// components
+// internal
 import checkPointReducer from "./reducers/checkPoint";
-// import textTypingReducer from "./reducers/textTyping";
-// import currentSymbolReducer from "./reducers/currentSymbol";
-
+import mistakesCounter from "./reducers/mistakesCounter";
 
 // main ====================================================== //
 let store = configureStore({
     reducer: {
-        check_point: checkPointReducer
-        // textTyping: textTypingReducer,
-        // currentSymbol: currentSymbolReducer,
+        check_point: checkPointReducer,
+        mistakes_counter: mistakesCounter,
     },
 });
 

@@ -1,7 +1,13 @@
 // imports =================================================== //
-// libs
-import React, { useEffect, useRef, useState } from "react";
-// components
+// external
+import React, { useState } from "react";
+import {
+    useAppDispatch
+} from "@shared/hooks/useAppDispatch";
+import {
+    increment as increment_mistakes
+} from "@app/redux/reducers/mistakesCounter";
+// internal
 import "./ui/index.css"
 import { InputTypingType } from "./types";
 
@@ -42,8 +48,11 @@ let InputTyping: InputTypingType = ({
     value
 }) => {
 
+    let dispatch = useAppDispatch();
+
     let [required, setRequired] = useState(true);
     let [false_input, setFalseInput] = useState("");
+    let [hasMistake, setHasMistake] = useState(false);
 
     function clearInputValueOn(time: number) {
         setTimeout(() => {
@@ -57,9 +66,14 @@ let InputTyping: InputTypingType = ({
 
         if (current_symbol === inputKey && required) {
             updateValue();
+            setHasMistake(false);
         } else {
             setRequired(false);
             setFalseInput(false_input + inputKey);
+            if (!hasMistake) {
+                setHasMistake(true);
+                dispatch(increment_mistakes());
+            }
         }
     }
 
@@ -78,7 +92,6 @@ let InputTyping: InputTypingType = ({
     );
 
 };
-
 
 // export ==================================================== //
 export default InputTyping;

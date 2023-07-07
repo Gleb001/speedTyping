@@ -1,7 +1,5 @@
 // main ====================================================== //
-function convertToMinutes(time: number) {
-    return ((time / 1000) / 60);
-}
+const convertToMinutes = (time: number) => ((time / 1000) / 60);
 
 // export ==================================================== //
 export default convertToMinutes;

@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type TypingTrainerType = FC<{}>
+type TextSpeedometrInputType = FC<{ all: boolean }>
 
 // export ==================================================== //
-export { TypingTrainerType };
+export { TextSpeedometrInputType };

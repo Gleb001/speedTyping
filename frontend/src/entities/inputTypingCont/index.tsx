@@ -5,7 +5,13 @@ import splitBy from "@shared/helpers/splitBy";
 import getChildHTMLElements from "@shared/helpers/getChildHTMLElements";
 import { useAppDispatch } from "@shared/hooks/useAppDispatch";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
-import { set } from "@app/redux/reducers/checkPoint";
+import {
+    increment as increment_point,
+    reset as reset_point
+} from "@app/redux/reducers/checkPoint";
+import {
+    reset as reset_mistakes
+} from "@app/redux/reducers/mistakesCounter";
 // internal
 import "./ui/index.css"
 import { TextTypingRefType } from "./types";
@@ -16,6 +22,7 @@ import InputTyping from "./components/inputTyping";
 let TextTyping = ({}) => {
 
     const textTypingRef = useRef<TextTypingRefType>(null);
+
     let dispatch = useAppDispatch();
 
     let [source_text, setSourceText] = useState("");
@@ -29,7 +36,8 @@ let TextTyping = ({}) => {
         if (source_text === "") {
             getTextsTyping().then(result => setSourceText(result));
         } else {
-            dispatch(set(0));
+            dispatch(reset_point());
+            dispatch(reset_mistakes())
         }
     }, [source_text]);
 
@@ -49,7 +57,7 @@ let TextTyping = ({}) => {
     return (
         <div>
             <InputTyping
-                updateValue={() => dispatch(set(++check_point))}
+                updateValue={() => dispatch(increment_point())}
                 current_symbol={active_text[0]}
                 value={disabled_text}
             />
