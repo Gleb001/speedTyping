@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import splitBy from "@shared/helpers/splitBy";
 import getChildHTMLElements from "@shared/helpers/getChildHTMLElements";
-import { useAppDispatch } from "@shared/hooks/useAppDispatch";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 import {
     increment as increment_point,
@@ -17,17 +16,18 @@ import "./ui/index.css"
 import { TextTypingRefType } from "./types";
 import getTextsTyping from "./api/getTextsTyping";
 import InputTyping from "./components/inputTyping";
+import { useDispatch } from "react-redux";
 
 // main ====================================================== //
 let TextTyping = ({}) => {
 
-    const textTypingRef = useRef<TextTypingRefType>(null);
+    let dispatch = useDispatch();
 
-    let dispatch = useAppDispatch();
+    const textTypingRef = useRef<TextTypingRefType>(null);
 
     let [source_text, setSourceText] = useState("");
     let check_point = useAppSelector(state => state.check_point);
-    let [disabled_text, active_text] = splitBy(source_text, check_point);
+    let [disabled_text, active_text] = splitBy(source_text, check_point.current);
 
     useEffect(() => {
         if (isUpdateSourceText()) setSourceText(active_text);

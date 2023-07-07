@@ -11,16 +11,19 @@ let CorrectInputCounter: CorrectInputCounterType = ({ }) => {
     let check_point = useAppSelector(state => state.check_point)
     let mistakes_counter = useAppSelector(state => state.mistakes_counter);
 
-    let percent_mistakes = 0;
-    if (check_point !== 0) {
-        percent_mistakes = Math.floor(
-            mistakes_counter * 100 / check_point
+    function getCorrectInput(type: "current" | "previous") {
+        let percent_mistakes = !check_point[type] ? 100 : Math.floor(
+            mistakes_counter[type] * 100 / (check_point[type] + 1)
         );
+        return (100 - percent_mistakes);
     }
 
     return (
         <div>
-            Correct Input: {100 - percent_mistakes}%
+            Correct Input:
+                {getCorrectInput("current")}/
+                {getCorrectInput("previous")}
+            %
         </div>
     );
 
