@@ -1,11 +1,12 @@
 // imports =================================================== //
-// libs
+// external
 import React from "react";
-// components
-import "./styles/index.css";
+// slices (FSD) - components
+import Routing from "@pages/index";
+// internal
+import "./ui/index.css";
 import { AppType } from "./types";
 import AppProviders from "./providers";
-import Routing from "../pages";
 
 // main ====================================================== //
 let App: AppType = ({}) => AppProviders(() => <Routing />);

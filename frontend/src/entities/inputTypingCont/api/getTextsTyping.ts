@@ -1,5 +1,5 @@
 // imports =================================================== //
-import withAPI from "@libs/withAPI";
+import withAPI from "@shared/libs/withAPI";
 
 // constants ================================================= //
 const TEXTS_TYPING_URL = "/texts_typing/get.php";

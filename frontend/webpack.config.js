@@ -3,22 +3,17 @@ const path = require("path");
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 // constants ================================================= //
+const SRC_PATH = path.resolve(__dirname, "./src");
 const PATHS = {
-    "@components": path.resolve(
-        __dirname, "./src/shared/components"
-    ),
-    "@libs": path.resolve(
-        __dirname, "./src/shared/libs"
-    ),
-    "@helpers": path.resolve(
-        __dirname, "./src/shared/helpers"
-    ),
-    "@hooks": path.resolve(
-        __dirname, "./src/shared/hooks"
-    ),
-    "src/": path.resolve(
-        __dirname, "./src"
-    )
+    "@app":      SRC_PATH + "/app",
+    "@pages":    SRC_PATH + "/pages",
+    "@shared":   SRC_PATH + "/shared",
+    "@widgets":  SRC_PATH + "/widgets",
+    "@entities": SRC_PATH + "/entities",
+    // "@components": SRC_PATH + "./src/shared/components",
+    // "@libs": SRC_PATH + "./src/shared/libs",
+    // "@helpers": SRC_PATH + "./src/shared/helpers",
+    // "@hooks": SRC_PATH + "./src/shared/hooks",
 };
 
 // export ==================================================== //

@@ -2,9 +2,7 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type TextSpeedometrType = FC<{
-    value: string | number
-}>
+type totalSpeedType = FC<{ }>
 
 // export ==================================================== //
-export { TextSpeedometrType };
+export { totalSpeedType };
