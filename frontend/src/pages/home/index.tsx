@@ -6,8 +6,6 @@ import TypingTrainer from "@widgets/typing_trainer";
 import "./ui/index.css";
 import { HomePageType } from "./types";
 
-// constants ================================================= //
-
 // main ====================================================== //
 let HomePage: HomePageType = ({ }) => {
     return (

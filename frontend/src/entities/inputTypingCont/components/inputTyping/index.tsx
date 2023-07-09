@@ -1,9 +1,6 @@
 // imports =================================================== //
 // external
 import React, { useState } from "react";
-import {useAppDispatch} from "@shared/hooks/useAppDispatch";
-import { useAppSelector } from "@shared/hooks/useAppSelector";
-import { setErrorIndex } from "@app/redux/reducers/mistakesCounter";
 // internal
 import "./ui/index.css"
 import { InputTypingType } from "./types";
@@ -40,50 +37,44 @@ const specialKeys = [
 
 // main ====================================================== //
 let InputTyping: InputTypingType = ({
+    updateTextTyping,
     current_symbol,
-    updateValue,
-    value
+    isResetValue,
 }) => {
 
-    let dispatch = useAppDispatch();
-    let check_point = useAppSelector(state => state.check_point);
-    let mistakes_counter = useAppSelector(state => state.mistakes_counter);
+    let [value, setValue] = useState("");
+    if (isResetValue && value !== "") setValue("");
 
-    let [required, setRequired] = useState(true);
+    let [hasError, setHasError] = useState(false);
     let [false_input, setFalseInput] = useState("");
 
-    function clearInputValueOn(time: number) {
-        setTimeout(() => {
-            setRequired(true);
-            setFalseInput("");
-        }, time);
-    }
+    let isRequired = () => false_input === "";
+    if (!isRequired()) setTimeout(() => setFalseInput(""), 200);
+
     function handleKeyUp(event: React.KeyboardEvent) {
         let inputKey = event.key === "Enter" ? "¶" : event.key;
         if (specialKeys.includes(inputKey)) return;
 
-        if (current_symbol === inputKey && required) {
-            updateValue();
+        if (current_symbol === inputKey && isRequired()) {
+            setHasError(false);
+            updateTextTyping(hasError);
+            setValue(value + current_symbol);
         } else {
-            setRequired(false);
+            setHasError(true);
             setFalseInput(false_input + inputKey);
-            if (mistakes_counter.current.at(-1) !== check_point.current) {
-                dispatch(setErrorIndex(check_point.current));
-            }
         }
     }
 
-    if (!required) clearInputValueOn(200);
     return (
         <input
             id="input_typing"
-            className={required?"input_valid":"input_invalid"}
+            className={isRequired() ? "input_valid" : "input_invalid"}
 
             value={value + false_input}
             onKeyUp={handleKeyUp}
-            required={required}
+            required={isRequired()}
 
-            onChange={(event) => {}}
+            onChange={(event) => { }}
         />
     );
 

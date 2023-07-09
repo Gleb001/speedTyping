@@ -2,9 +2,16 @@
 import { FC } from "react";
 
 // main ====================================================== //
+type DisabledTextType = JSX.Element | string
 type TextTypingRefType = HTMLParagraphElement | null
-type ErrorType = FC<{value: string}>
+
+type ErrorCharType = FC<{value: string}>
 type TextTypingType = FC<{}>
 
 // export ==================================================== //
-export { TextTypingRefType, ErrorType, TextTypingType };
+export {
+    TextTypingRefType,
+    ErrorCharType,
+    TextTypingType,
+    DisabledTextType
+};

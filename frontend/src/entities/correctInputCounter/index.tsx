@@ -15,7 +15,9 @@ let ErrorCounter: ErrorCounterType = ({ }) => {
     let mistakes_counter = useAppSelector(state => state.mistakes_counter);
 
     function getPercentError(type: "current" | "previous") {
-        return (mistakes_counter[type].length / (check_point[type] + 1)) * 100;
+        let number_inputs = check_point[type] + 1;
+        let error_rate = mistakes_counter[type] / number_inputs;
+        return error_rate * 100;
     }
 
     return (

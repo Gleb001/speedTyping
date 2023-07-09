@@ -3,10 +3,10 @@ import { FC } from "react";
 
 // main ====================================================== //
 type InputTypingType = FC<{
-    updateValue: () => void
-    // setError: () => void
+    updateTextTyping: (hasError: boolean) => void
     current_symbol: string | null
-    value: string
+    isResetValue: boolean
+    // value: string
 }>
 
 // export ==================================================== //
