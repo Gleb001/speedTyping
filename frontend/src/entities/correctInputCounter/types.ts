@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type CorrectInputCounterType = FC<{ }>
+type ErrorCounterType = FC<{ }>
 
 // export ==================================================== //
-export { CorrectInputCounterType };
+export { ErrorCounterType };

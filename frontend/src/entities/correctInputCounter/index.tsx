@@ -2,32 +2,36 @@
 // external
 import React from "react";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
+// slices (FSD)
+import Indication from "@shared/components/indication";
 // internal
-import { CorrectInputCounterType } from "./types";
+import "./ui/index.css";
+import { ErrorCounterType } from "./types";
 
 // main ====================================================== //
-let CorrectInputCounter: CorrectInputCounterType = ({ }) => {
+let ErrorCounter: ErrorCounterType = ({ }) => {
 
-    let check_point = useAppSelector(state => state.check_point)
+    let check_point = useAppSelector(state => state.check_point);
     let mistakes_counter = useAppSelector(state => state.mistakes_counter);
 
-    function getCorrectInput(type: "current" | "previous") {
-        let percent_mistakes = !check_point[type] ? 100 : Math.floor(
-            mistakes_counter[type] * 100 / (check_point[type] + 1)
-        );
-        return (100 - percent_mistakes);
+    function getPercentError(type: "current" | "previous") {
+        return (mistakes_counter[type].length / (check_point[type] + 1)) * 100;
     }
 
     return (
-        <div>
-            Correct Input:
-                {getCorrectInput("current")}/
-                {getCorrectInput("previous")}
-            %
-        </div>
+        <Indication
+            value={
+                getPercentError("current").toFixed(1) +
+                " / " +
+                getPercentError("previous").toFixed(1) +
+                "%"
+            }
+            icon_class_name="exclamation_mark"
+            icon_content="!"
+        />
     );
 
 };
 
 // export ==================================================== //
-export default CorrectInputCounter;
+export default ErrorCounter;

@@ -3,11 +3,14 @@
 import React, { useEffect, useState } from "react";
 import convertToMinutes from "@shared/helpers/convertToMinutes";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
+// slices (FSD)
+import Indication from "@shared/components/indication";
 // internal
+import "./ui/index.css";
 import { TextSpeedometrInputType } from "./types";
 
 // main ====================================================== //
-let TextInputSpeedometr: TextSpeedometrInputType = ({ all }) => {
+let TextInputSpeedometr: TextSpeedometrInputType = ({all = false}) => {
 
     let check_point = useAppSelector(state => state.check_point);
 
@@ -44,8 +47,11 @@ let TextInputSpeedometr: TextSpeedometrInputType = ({ all }) => {
 
     return (
         <>
-            <div>Total Speed: {getTotalSpeed("current")}/{prev_speed} сим./мин.</div>
-            {all ? <div>Current Speed: {speed} сим./мин.</div> : ""}
+            <Indication
+                value={getTotalSpeed("current") + " / " + prev_speed}
+                icon_class_name="speed_typing"
+            />
+            {all ? <Indication value={speed}/> : ""}
         </>
     );
 

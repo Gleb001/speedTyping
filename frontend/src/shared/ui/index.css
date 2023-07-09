@@ -1,6 +1,8 @@
 /* imports =================================================== */
-@import url("./normalize.css");
-@import url("./variables.css");
+@import url("./styles/normalize.css");
+@import url("./styles/variables.css");
+@import url("./fonts/fonts.css");
+@import url("./images/icons.css");
 
 /* main ====================================================== */
 body {

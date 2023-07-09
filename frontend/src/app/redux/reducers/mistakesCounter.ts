@@ -1,25 +1,25 @@
 // imports =================================================== //
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 // main ====================================================== //
 let currentSymbolSlice = createSlice({
     name: "mistakes-counter",
     initialState: {
-        current: 0,
-        previous: 0,
+        current: [] as number[],
+        previous: [] as number[],
     },
     reducers: {
-        increment: (state) => {
-            state.current++;
+        setErrorIndex: (state, action: PayloadAction<number>) => {
+            state.current.push(action.payload);
         },
         reset: (state) => {
             state.previous = state.current;
-            state.current = 0;
+            state.current = [];
         }
     }
 });
 
 // // export ==================================================== //
 export {currentSymbolSlice};
-export let { increment, reset } = currentSymbolSlice.actions;
+export let { reset, setErrorIndex } = currentSymbolSlice.actions;
 export default currentSymbolSlice.reducer;

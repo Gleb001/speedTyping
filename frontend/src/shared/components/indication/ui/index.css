@@ -1,0 +1,24 @@
+.indication {
+
+    display: inline-flex;
+
+    background-color: var(--primary-additional-color);
+    color: var(--secondary-color);
+
+    border-radius: 20px;
+
+    box-sizing: border-box;
+    padding: 8px 20px;
+
+}
+.indication span:first-child {
+    margin-right: 2.5px;
+}
+.indication span:last-child {
+
+    width: 23px;
+    height: 23px;
+
+    margin-left: 2.5px;
+
+}

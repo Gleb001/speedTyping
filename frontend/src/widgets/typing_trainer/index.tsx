@@ -3,7 +3,7 @@
 import React from "react";
 // slices (FSD) - components
 import TextInputSpeedometr from "@entities/textInputSpeedometr";
-import CorrectInputCounter from "@entities/correctInputCounter";
+import ErrorCounter from "@entities/correctInputCounter";
 import TextTyping from "@entities/inputTypingCont";
 // internal
 import "./ui/index.css";
@@ -15,8 +15,8 @@ let TypingTrainer: TypingTrainerType = ({ }) => (
         <TextTyping />
         <div id="tool_line">
             <div id="container_texts_speedometers">
-                <TextInputSpeedometr all/>
-                <CorrectInputCounter />
+                <ErrorCounter />
+                <TextInputSpeedometr />
             </div>
         </div>
     </div>

@@ -1,0 +1,9 @@
+:root {
+    --primary-color: #2C2C2C;
+    --primary-additional-color: #353535;
+    --secondary-additional-color: #505050;
+    --secondary-color: white;
+
+    --mistake-color: #D62829;
+    --invalid-value-color: yellow;
+}

@@ -1,17 +1,18 @@
 #input_typing {
 
     width: 100%;
-    margin: 10px 0;
 
-    border-bottom: 1px solid var(--secondary-color);
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    font-weight: 300;
+
+    padding: 0;
+    border: none;
     outline: none;
 
     transition:
         background-color .2s linear,
         color .2s linear;
+
+    position: relative;
 
 }
 .input_valid {

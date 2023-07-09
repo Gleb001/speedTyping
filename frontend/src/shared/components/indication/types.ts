@@ -2,12 +2,11 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type InputTypingType = FC<{
-    updateValue: () => void
-    // setError: () => void
-    current_symbol: string | null
-    value: string
+type IndicationType = FC<{
+    value: string | number,
+    icon_class_name?: string,
+    icon_content?: string
 }>
 
 // export ==================================================== //
-export { InputTypingType };
+export { IndicationType };

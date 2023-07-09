@@ -1,8 +1,9 @@
-/// imports =================================================== //
+// imports =================================================== //
 // external
 import React from "react";
-// internal
 import TypingTrainer from "@widgets/typing_trainer";
+// internal
+import "./ui/index.css";
 import { HomePageType } from "./types";
 
 // constants ================================================= //

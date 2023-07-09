@@ -1,12 +1,9 @@
 // imports =================================================== //
 // external
 import React, { useState } from "react";
-import {
-    useAppDispatch
-} from "@shared/hooks/useAppDispatch";
-import {
-    increment as increment_mistakes
-} from "@app/redux/reducers/mistakesCounter";
+import {useAppDispatch} from "@shared/hooks/useAppDispatch";
+import { useAppSelector } from "@shared/hooks/useAppSelector";
+import { setErrorIndex } from "@app/redux/reducers/mistakesCounter";
 // internal
 import "./ui/index.css"
 import { InputTypingType } from "./types";
@@ -49,10 +46,11 @@ let InputTyping: InputTypingType = ({
 }) => {
 
     let dispatch = useAppDispatch();
+    let check_point = useAppSelector(state => state.check_point);
+    let mistakes_counter = useAppSelector(state => state.mistakes_counter);
 
     let [required, setRequired] = useState(true);
     let [false_input, setFalseInput] = useState("");
-    let [hasMistake, setHasMistake] = useState(false);
 
     function clearInputValueOn(time: number) {
         setTimeout(() => {
@@ -66,13 +64,11 @@ let InputTyping: InputTypingType = ({
 
         if (current_symbol === inputKey && required) {
             updateValue();
-            setHasMistake(false);
         } else {
             setRequired(false);
             setFalseInput(false_input + inputKey);
-            if (!hasMistake) {
-                setHasMistake(true);
-                dispatch(increment_mistakes());
+            if (mistakes_counter.current.at(-1) !== check_point.current) {
+                dispatch(setErrorIndex(check_point.current));
             }
         }
     }
