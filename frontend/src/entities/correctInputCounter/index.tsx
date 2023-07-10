@@ -3,37 +3,50 @@
 import React from "react";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // slices (FSD)
-import Indication from "@shared/components/indication";
+import Speedometr from "@shared/components/speedometr";
 // internal
 import "./ui/index.css";
-import { ErrorCounterType } from "./types";
+import { ErrorSpeedometrType, getPercentErrorsType } from "./types";
+
+// inner logic main function component ======================= //
+const getPercentErrors: getPercentErrorsType = (
+    inputs, errors, accuracy
+) => {
+    let accuracy_coef = 10 * accuracy;
+    let percent_errors = (errors / inputs) * 10000;
+    return Math.trunc(percent_errors / accuracy_coef) / accuracy_coef;
+}
 
 // main ====================================================== //
-let ErrorCounter: ErrorCounterType = ({ }) => {
+let ErrorSpeedometr: ErrorSpeedometrType = ({ }) => {
 
     let check_point = useAppSelector(state => state.check_point);
     let mistakes_counter = useAppSelector(state => state.mistakes_counter);
 
-    function getPercentError(type: "current" | "previous") {
-        let number_inputs = check_point[type] + 1;
-        let error_rate = mistakes_counter[type] / number_inputs;
-        return error_rate * 100;
+    function getValue(type: "current" | "previous") {
+        return getPercentErrors(
+            check_point[type] === 0 ? 1 : check_point[type],
+            mistakes_counter[type],
+            1
+        );
     }
 
     return (
-        <Indication
-            value={
-                getPercentError("current").toFixed(1) +
-                " / " +
-                getPercentError("previous").toFixed(1) +
-                "%"
+        <Speedometr
+            current={
+                check_point.current === 0 ?
+                    getValue("previous") :
+                    getValue("current")
             }
-            icon_class_name="exclamation_mark"
-            icon_content="!"
+            type={
+                check_point.current === 0  ?
+                    "decrease" :
+                    "none"
+            }
         />
     );
 
 };
 
 // export ==================================================== //
-export default ErrorCounter;
+export default ErrorSpeedometr;

@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
 
-    background-color: var(--mistake-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 50%;
 
     color: var(--secondary-color);

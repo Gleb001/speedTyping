@@ -1,12 +1,19 @@
 // imports =================================================== //
-import {} from "./types";
+// external
 import React from "react";
+// internal
+import {} from "./types";
+import "./ui/index.css";
 
 // constants ================================================= //
 
 // main ====================================================== //
 let NameComponent = () => {
-    return ( );
+    return (
+        <div>
+            
+        </div>
+    );
 };
 
 // export ==================================================== //

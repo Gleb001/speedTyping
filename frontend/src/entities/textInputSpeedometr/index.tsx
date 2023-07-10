@@ -4,62 +4,54 @@ import React, { useEffect, useState } from "react";
 import convertToMinutes from "@shared/helpers/convertToMinutes";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // slices (FSD)
-import Indication from "@shared/components/indication";
+import Speedometr from "@shared/components/speedometr";
 // internal
 import "./ui/index.css";
-import { TextSpeedometrInputType, TotalSpeedType } from "./types";
+import { TypingSpeedometrType, TotalSpeedType } from "./types";
 
 // inner logic main function component ======================= //
-const total_speed: TotalSpeedType = (length_char, time) => (
+const getSpeed: TotalSpeedType = (length_char, time) => (
     time !== 0 ? Math.floor(length_char / time) : 0
 );
 
 // main ====================================================== //
-let TextInputSpeedometr: TextSpeedometrInputType = ({ all = false }) => {
+let TypingSpeedometr: TypingSpeedometrType = ({ }) => {
 
     let check_point = useAppSelector(state => state.check_point);
 
     let [start, setStart] = useState(0);
     let [total_time, setTotalTime] = useState(0);
 
-    let [speed, setSpeed] = useState(0);
-    let [prev_speed, setPrevSpeed] = useState(0);
-    let current_speed = total_speed(check_point["current"], total_time);
-
     useEffect(() => {
-
-        if (check_point.current === 0) {
+        if (check_point.current !== 0) {
+            let difference_time = convertToMinutes(Date.now() - start);
+            setTotalTime(difference_time < 1 ? (total_time + difference_time) : 0);
+            setStart(Date.now());
+        } else {
             setStart(0);
-            setSpeed(0);
-            setPrevSpeed(total_speed(check_point["previous"], total_time));
-            return;
         }
-
-        let difference_time = convertToMinutes(Date.now() - start);
-        let speed_value = 0;
-        let total_time_value = 0;
-        if (difference_time < 1) {
-            speed_value = Math.floor(1 / difference_time);
-            total_time_value = total_time + difference_time;
-        }
-
-        setStart(Date.now());
-        setSpeed(speed_value);
-        setTotalTime(total_time_value);
-
     }, [check_point]);
 
+    function getValue(type: "current" | "previous") {
+        return getSpeed(check_point[type], total_time);
+    }
+
     return (
-        <>
-            <Indication
-                value={`${current_speed} / ${prev_speed}`}
-                icon_class_name="speed_typing"
-            />
-            {all ? <Indication value={speed} /> : ""}
-        </>
+        <Speedometr
+            current={
+                check_point.current === 0 ?
+                    getValue("previous") :
+                    getValue("current")
+            }
+            type={
+                check_point.current == 0 ?
+                    "increase" :
+                    "none"
+            }
+        />
     );
 
 };
 
 // export ==================================================== //
-export default TextInputSpeedometr;
+export default TypingSpeedometr;

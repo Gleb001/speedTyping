@@ -2,7 +2,14 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type ErrorCounterType = FC<{ }>
+// functions
+type ErrorSpeedometrType = FC<{ }>
+type getPercentErrorsType = (
+    errors: number, inputs: number, accuracy: number
+) => number
 
 // export ==================================================== //
-export { ErrorCounterType };
+export {
+    ErrorSpeedometrType,
+    getPercentErrorsType
+};

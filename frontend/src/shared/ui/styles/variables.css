@@ -6,5 +6,6 @@
     --secondary-color: white;
 
     --mistake-color: #D62829;
+    --best-result-color: rgb(66, 211, 66);
     --invalid-value-color: yellow;
 }

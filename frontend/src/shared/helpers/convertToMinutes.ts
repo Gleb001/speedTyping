@@ -1,5 +1,6 @@
 // main ====================================================== //
-const convertToMinutes = (time: number) => ((time / 1000) / 60);
+// milliseconds -> minutes
+const convertToMinutes = (time: number) => time / 60000;
 
 // export ==================================================== //
 export default convertToMinutes;

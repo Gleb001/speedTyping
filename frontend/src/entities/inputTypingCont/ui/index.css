@@ -4,17 +4,36 @@
     margin: 5px 0;
 }
 
+/* typing tainer */
+#typing_trainer {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    margin: 10px 0;
+
+    font-size: 1.25em;
+    font-family: "Roboto";
+    font-weight: 300;
+
+}
+
 /* text typing */
 #text_typing {
 
     border-top: 1px solid;
 
+    display: block;
     height: 4.8em;
+    width: 100%;
+
     overflow: clip;
     overflow-clip-margin: 1px;
 
     margin: 2px 0;
-    display: block;
 
     line-height: 1.55em;
 

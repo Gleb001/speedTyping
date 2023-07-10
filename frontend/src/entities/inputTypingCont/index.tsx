@@ -10,38 +10,32 @@ import {
     increment as increment_mistake,
     reset as reset_mistakes
 } from "@app/redux/reducers/mistakesCounter";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@shared/hooks/useAppDispatch";
 // internal
 import "./ui/index.css"
 import {
     DisabledTextType,
     ErrorCharType,
     TextTypingRefType,
-    TextTypingType
+    TypingTrainerType
 } from "./types";
 import getTextsTyping from "./api/getTextsTyping";
 import InputTyping from "./components/inputTyping";
 
-// constants ================================================= //
-const ErrorChar: ErrorCharType = ({ value }) => (
-    <span className="error_text before_disabled_text">{
-        value
-    }</span>
-);
-
 // inner logic main function component ======================= //
+const ErrorChar: ErrorCharType = ({ value }) => (
+    <span className="error_text before_disabled_text">{value}</span>
+);
 function isResetTextTyping(textTyping: TextTypingRefType) {
-
     if (!textTyping) return false;
-
     let [disabledText, activeText] = getChildHTMLElements(textTyping);
     return (disabledText.offsetTop < activeText.offsetTop);
 }
 
 // main ====================================================== //
-let TextTyping: TextTypingType = ({ }) => {
+let TypingTrainer: TypingTrainerType = ({ }) => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const textTypingRef = useRef<TextTypingRefType>(null);
     let [disabled_text, setDisabledText] = useState<DisabledTextType[]>([]);
@@ -83,7 +77,7 @@ let TextTyping: TextTypingType = ({ }) => {
     }
 
     return (
-        <div>
+        <div id="typing_trainer">
             <InputTyping
                 updateTextTyping={updateTextTyping}
                 current_symbol={active_text[0]}
@@ -106,4 +100,4 @@ let TextTyping: TextTypingType = ({ }) => {
 };
 
 // export ==================================================== //
-export default TextTyping;
+export default TypingTrainer;
