@@ -3,10 +3,10 @@
 import React from "react";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // slices (FSD)
-import Speedometr from "@shared/components/speedometr";
+import Speedometer from "@shared/components/speedometr";
 // internal
 import "./ui/index.css";
-import { ErrorSpeedometrType, getPercentErrorsType } from "./types";
+import { ErrorSpeedometerType, getPercentErrorsType } from "./types";
 
 // inner logic main function component ======================= //
 const getPercentErrors: getPercentErrorsType = (
@@ -18,7 +18,7 @@ const getPercentErrors: getPercentErrorsType = (
 }
 
 // main ====================================================== //
-let ErrorSpeedometr: ErrorSpeedometrType = ({ }) => {
+let ErrorSpeedometer: ErrorSpeedometerType = ({ }) => {
 
     let check_point = useAppSelector(state => state.check_point);
     let mistakes_counter = useAppSelector(state => state.mistakes_counter);
@@ -32,7 +32,7 @@ let ErrorSpeedometr: ErrorSpeedometrType = ({ }) => {
     }
 
     return (
-        <Speedometr
+        <Speedometer
             current={
                 check_point.current === 0 ?
                     getValue("previous") :
@@ -49,4 +49,4 @@ let ErrorSpeedometr: ErrorSpeedometrType = ({ }) => {
 };
 
 // export ==================================================== //
-export default ErrorSpeedometr;
+export default ErrorSpeedometer;

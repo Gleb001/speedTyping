@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type TypingSpeedometrsType = FC<{}>
+type TypingSpeedometersType = FC<{}>
 
 // export ==================================================== //
-export { TypingSpeedometrsType };
+export { TypingSpeedometersType };

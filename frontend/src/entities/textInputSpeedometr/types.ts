@@ -2,11 +2,11 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type TypingSpeedometrType = FC<{ }>
+type TypingSpeedometerType = FC<{ }>
 type TotalSpeedType = (length_char: number, time: number) => number
 
 // export ==================================================== //
 export {
-    TypingSpeedometrType,
+    TypingSpeedometerType,
     TotalSpeedType
 };

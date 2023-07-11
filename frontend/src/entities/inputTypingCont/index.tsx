@@ -23,14 +23,14 @@ import getTextsTyping from "./api/getTextsTyping";
 import InputTyping from "./components/inputTyping";
 
 // inner logic main function component ======================= //
-const ErrorChar: ErrorCharType = ({ value }) => (
-    <span className="error_text before_disabled_text">{value}</span>
-);
 function isResetTextTyping(textTyping: TextTypingRefType) {
     if (!textTyping) return false;
     let [disabledText, activeText] = getChildHTMLElements(textTyping);
     return (disabledText.offsetTop < activeText.offsetTop);
 }
+const ErrorChar: ErrorCharType = ({ value }) => (
+    <span className="error_text before_disabled_text">{value}</span>
+);
 
 // main ====================================================== //
 let TypingTrainer: TypingTrainerType = ({ }) => {
@@ -90,9 +90,7 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
                 <span className="disabled_text before_disabled_text" >{
                     disabled_text.map(char => char)
                 }</span>
-                <span className="active_text">{
-                    active_text
-                }</span>
+                <span className="active_text">{active_text}</span>
             </p>
         </div>
     );

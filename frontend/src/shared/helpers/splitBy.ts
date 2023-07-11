@@ -1,4 +1,7 @@
 // main ====================================================== //
+// "split me", index = 3
+//     ^
+// "split me" -> ["spl", "it me"]
 const splitBy = (string: string, sep_index: number) => {
     let length_string = string.length;
     

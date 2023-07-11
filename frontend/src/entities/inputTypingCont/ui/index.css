@@ -7,17 +7,15 @@
 /* typing tainer */
 #typing_trainer {
 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
     width: 100%;
     margin: 10px 0;
 
     font-size: 1.25em;
     font-family: "Roboto";
     font-weight: 300;
+
+    box-sizing: border-box;
+    padding: 0 50px;
 
 }
 
@@ -30,29 +28,26 @@
     height: 4.8em;
     width: 100%;
 
+    margin: 2px 0;
+
     overflow: clip;
     overflow-clip-margin: 1px;
-
-    margin: 2px 0;
 
     line-height: 1.55em;
 
 }
 #text_typing span {
     display: inline;
-    padding-top: 10px;
     position: relative;
 }
 
 /* before disabled text */
 .before_disabled_text::before {
     content: "";
-
     height: 1px;
     width: 100%;
-
     position: absolute;
-    top: 6px;
+    top: -4px;
 }
 
 /* active text */

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 // internal
 import "./ui/index.css";
-import { SpeedometrType, ColorListType, ColorType } from "./types";
+import { SpeedometerType, ColorListType } from "./types";
 
 // constants ================================================= //
 const COLORS: ColorListType = {
@@ -12,31 +12,38 @@ const COLORS: ColorListType = {
     "red": "--mistake-color",
 }
 
+// inner logic main function component ======================= //
+let getStyleOn = (var_property: string) => `var(${var_property})`;
+
 // main ====================================================== //
-let Speedometr: SpeedometrType = ({ current, type }) => {
+let Speedometer: SpeedometerType = ({ current, type }) => {
 
     let [previous, setPrevious] = useState(0);
-    let [color, setColor] = useState<ColorType>(COLORS.white);
+    let [color, setColor] = useState<string>(COLORS.white);
 
     useEffect(() => {
-        if (type === "none" || (current === 0 && previous === 0)) return;
+
+        let isDisabled = type === "none" || (current === 0 && previous === 0);
+        if (isDisabled) return;
 
         let comparison_operator = type === "decrease" ? "<" : ">";
         let isBest = eval(`${current} ${comparison_operator} ${previous}`);
         
         setColor(isBest ? COLORS.green : COLORS.red);
         setPrevious(current);
+
     }, [type]);
 
-    let isReset = ( type === "none" && color !== COLORS.white);
-    if (isReset) setTimeout(() => setColor(COLORS.white), 200);
+    let isResetColor = type === "none" && color !== COLORS.white;
+    if (isResetColor) setColor(COLORS.white);
     return (
-        <span className="speedometr" style={{ color: `var(${color})` }}>{
-            current
-        }</span>
+        <span
+            className="speedometr"
+            style={{color: getStyleOn(color)}}
+        >{current}</span>
     );
 
 };
 
 // export ==================================================== //
-export default Speedometr;
+export default Speedometer;

@@ -2,18 +2,18 @@
 // external
 import React from "react";
 // slices (FSD) - components
-import TypingSpeedometr from "@entities/textInputSpeedometr";
-import ErrorSpeedometr from "@entities/correctInputCounter";
+import TypingSpeedometer from "@entities/textInputSpeedometr";
+import ErrorSpeedometer from "@entities/correctInputCounter";
 // internal
 import "./ui/index.css";
-import { TypingSpeedometrsType } from "./types";
+import { TypingSpeedometersType } from "./types";
 
 // main ====================================================== //
-let TypingSpeedometrs: TypingSpeedometrsType = ({ }) => (
+let TypingSpeedometers: TypingSpeedometersType = ({ }) => (
     <div id="container_speedometers">
-        <ErrorSpeedometr /> % / <TypingSpeedometr /> cpm
+        <ErrorSpeedometer /> % / <TypingSpeedometer /> cpm
     </div>
 );
 
 // export ==================================================== //
-export default TypingSpeedometrs;
+export default TypingSpeedometers;

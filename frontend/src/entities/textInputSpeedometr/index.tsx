@@ -7,7 +7,7 @@ import { useAppSelector } from "@shared/hooks/useAppSelector";
 import Speedometr from "@shared/components/speedometr";
 // internal
 import "./ui/index.css";
-import { TypingSpeedometrType, TotalSpeedType } from "./types";
+import { TypingSpeedometerType, TotalSpeedType } from "./types";
 
 // inner logic main function component ======================= //
 const getSpeed: TotalSpeedType = (length_char, time) => (
@@ -15,7 +15,7 @@ const getSpeed: TotalSpeedType = (length_char, time) => (
 );
 
 // main ====================================================== //
-let TypingSpeedometr: TypingSpeedometrType = ({ }) => {
+let TypingSpeedometer: TypingSpeedometerType = ({ }) => {
 
     let check_point = useAppSelector(state => state.check_point);
 
@@ -54,4 +54,4 @@ let TypingSpeedometr: TypingSpeedometrType = ({ }) => {
 };
 
 // export ==================================================== //
-export default TypingSpeedometr;
+export default TypingSpeedometer;

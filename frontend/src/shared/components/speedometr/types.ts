@@ -2,30 +2,24 @@
 import { FC } from "react";
 
 // main ====================================================== //
-// functions 
-type SpeedometrType = FC<{
-    current: number,
-    type: TypeSpeedometrType,
-}>
 
-// objects
+// simple ---------------------------------------------------- //
+type TypeSpeedometrType = "increase" | "decrease" | "none"
+
+// compose --------------------------------------------------- //
 interface ColorListType {
     "white": "--secondary-color",
     "green": "--best-result-color",
     "red": "--mistake-color",
 }
-
-// simple
-type ColorType = ColorListType[keyof ColorListType]
-type TypeSpeedometrType = (
-    "increase" |
-    "decrease" |
-    "none"
-)
+type SpeedometerType = FC<{
+    current: number,
+    type: TypeSpeedometrType,
+}>
 
 // export ==================================================== //
 export {
-    SpeedometrType,
+    // compose
+    SpeedometerType,
     ColorListType,
-    ColorType
 };

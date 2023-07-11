@@ -1,4 +1,2 @@
 /* main ====================================================== */
-.speedometr {
-    transition: color .3s linear;
-}
+.speedometr { transition: color .3s linear; }

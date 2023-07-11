@@ -2,13 +2,13 @@
 // external
 import React from "react";
 // internal
-import {} from "./types";
+import { NameComponentType } from "./types";
 import "./ui/index.css";
 
 // constants ================================================= //
 
 // main ====================================================== //
-let NameComponent = () => {
+let NameComponent: NameComponentType = () => {
     return (
         <div>
             

@@ -1,8 +1,7 @@
 // imports =================================================== //
-// libs
+// external
 import React, { useState } from "react";
-// components
-import "./ui/index.css";
+// internal
 import { TextareaType } from "./types";
 
 // main ====================================================== //
