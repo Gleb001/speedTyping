@@ -1,22 +1,6 @@
 // import ==================================================== //
 import { LinkNodeType } from "./types";
 
-// additional functions ====================================== //
-function getLastNode(node: LinkNodeType)  {
-    let last_node = node;
-    while (last_node.next) last_node = last_node.next;
-    return last_node;
-}
-// function pushNodeIn(list: LinkListType, value: LinkNodeType) {
-//     if (!list.__firstNode) {
-//         list.__firstNode = value;
-//         list.__lastNode = getLastNode(list.__firstNode);
-//     } else if (list.__lastNode) {
-//         list.__lastNode.next = value;
-//         list.__lastNode = getLastNode(list.__lastNode.next);
-//     }
-// }
-
 // main ====================================================== //
 class LinkNode {
 
@@ -31,8 +15,8 @@ class LinkNode {
 }
 class LinkList {
 
-    __firstNode: LinkNodeType | null;
-    __lastNode: LinkNodeType | null;
+    __firstNode: LinkNodeType;
+    __lastNode: LinkNodeType;
 
     constructor () {
         this.__firstNode = null;
@@ -46,13 +30,14 @@ class LinkList {
         return this.__lastNode ? this.__lastNode.current : null;
     }
 
-    push(value: LinkNodeType) {
+    push(value: any) {
+        let new_link_node = new LinkNode(value);
         if (!this.__firstNode) {
-            this.__firstNode = value;
-            this.__lastNode = getLastNode(this.__firstNode);
-        } else if (this.__lastNode) {
-            this.__lastNode.next = value;
-            this.__lastNode = getLastNode(this.__lastNode.next);
+            this.__firstNode = new_link_node;
+            this.__lastNode = this.__firstNode;
+        } else {
+            this.__lastNode!.next = new_link_node;
+            this.__lastNode = this.__lastNode!.next;
         }
     }
     shift() {
