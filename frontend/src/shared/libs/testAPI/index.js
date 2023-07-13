@@ -34,11 +34,11 @@ function microTest(test) {
                         ` `,
                         `Function under test: ${test.api.name}`,
                         `-------------------------------------`,
-                        `Parameters:          ${__getOutputConsole(params)}`,
+                        `Parameters:          ${JSON.stringify(params)}`,
                         `-------------------------------------`,
-                        `Expected output:     ${__getOutputConsole(result)}`,
+                        `Expected output:     ${JSON.stringify(result)}`,
                         `------------------------------------`,
-                        `Current output:      ${__getOutputConsole(current_output)}`
+                        `Current output:      ${JSON.stringify(current_output)}`
                     ],
                     "\n"
                 ]
@@ -64,9 +64,6 @@ function __showMessage(sentences, sep=", ") {
         message += sentence + sep;
     }
     console.log(message);
-}
-function __getOutputConsole(value) {
-    return Array.isArray(value) ? JSON.stringify(value) : value;
 }
 
 // export ==================================================== //

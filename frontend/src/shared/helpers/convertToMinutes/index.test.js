@@ -5,13 +5,13 @@ import { createMicroTest } from "@shared/libs/testAPI";
 import convertToMinutes from ".";
 
 // main ====================================================== //
-let testingConvertToMinutes = createMicroTest(
+const testingConvertToMinutes = createMicroTest(
     convertToMinutes,
-    [[60000], 1],
-    [[250], 0.004166666666666667],
-    [[100], 0.0016666666666666668],
-    [[333], 0.00555],
-    [[1482], 0.0247],
+    [[60000], 1                     ],
+    [[250  ], 0.004166666666666667  ],
+    [[100  ], 0.0016666666666666668 ],
+    [[333  ], 0.00555               ],
+    [[1482 ], 0.0247                ],
 );
 
 // export ==================================================== //

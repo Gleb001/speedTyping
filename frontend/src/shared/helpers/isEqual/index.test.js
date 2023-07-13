@@ -3,9 +3,10 @@
 import { createMicroTest } from "@shared/libs/testAPI";
 // internal
 import isEqual from ".";
+import { LinkNode } from "@shared/libs/linkList";
 
 // main ====================================================== //
-let testingIsEqual = createMicroTest(
+const testingIsEqual = createMicroTest(
     isEqual,
     // on true
     [ ["", ""], true ],
@@ -28,6 +29,7 @@ let testingIsEqual = createMicroTest(
     [ [Date, Date], true ],
     [ [undefined, undefined], true ],
     [ [BigInt, BigInt], true ],
+    [ [new LinkNode("123"), new LinkNode("123")], true]
     // on false 
     [ ["", "123"], false ],
     [ [[], "123"], false ],

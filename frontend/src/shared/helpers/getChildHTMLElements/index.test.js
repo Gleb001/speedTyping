@@ -5,7 +5,7 @@ import { createMicroTest } from "@shared/libs/testAPI";
 import getChildHTMLElements from ".";
 
 // main ====================================================== //
-let testingGetChildHTMLElements = createMicroTest(
+const testingGetChildHTMLElements = createMicroTest(
     getChildHTMLElements,
     [
         [document.createElement("div")],

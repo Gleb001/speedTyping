@@ -7,7 +7,9 @@ import Routing from "@pages/index";
 import "./ui/index.css";
 import { AppType } from "./types";
 import AppProviders from "./providers";
-import "@shared/helpers/index.test";
+// tests
+// import "@shared/helpers/index.test";
+// import "@shared/libs/index.test";
 
 // main ====================================================== //
 let App: AppType = ({}) => AppProviders(() => <Routing />);

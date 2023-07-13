@@ -7,7 +7,7 @@ class LinkNode {
     public current: any | null;
     public next: any | null;
 
-    constructor(current: any) {
+    constructor(current: any = null) {
         this.current = current;
         this.next = null;
     }

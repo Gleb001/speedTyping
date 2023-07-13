@@ -5,7 +5,7 @@ import { createMicroTest } from "@shared/libs/testAPI";
 import splitBy from ".";
 
 // main ====================================================== //
-let testingSplitBy = createMicroTest(
+const testingSplitBy = createMicroTest(
     splitBy,
     [["split me", 5], ["split", " me"]],
     [["split me", 0], ["", "split me"]],

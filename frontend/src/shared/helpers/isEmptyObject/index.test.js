@@ -5,7 +5,7 @@ import { createMicroTest } from "@shared/libs/testAPI";
 import isEmptyObject from ".";
 
 // main ====================================================== //
-let testingIsEmptyObject = createMicroTest(
+const testingIsEmptyObject = createMicroTest(
     isEmptyObject,
     [[{}], true],
     [[[]], false],

@@ -9,7 +9,7 @@ import testingConvertToMinutes from "./convertToMinutes/index.test";
 import testingGetChildHTMLElements from "./getChildHTMLElements/index.test";
 
 // main ====================================================== //
-Test("Testing helpers", [
+Test("Testing helpers  (path: @shared/helpers)", [
     testingGetChildHTMLElements,
     testingConvertToMinutes,
     testingIsEmptyObject,

@@ -12,7 +12,10 @@ function isEqual(source: any, check: any) {
             return isEqualObjects(source, check);
         }
     } else if (typeof source === "function") {
-        return source.toString() === check.toString();
+        return (
+            source.toString().replace(/\s/g, "").replace(/(\r\n|\n|\r)/g, "") === 
+            check.toString().replace(/\s/g, "").replace(/(\r\n|\n|\r)/g, "")
+        );
     } else {
         if (Number.isNaN(source)) return Number.isNaN(check);
         return source === check;
@@ -30,7 +33,6 @@ function isEqualArrays(source: Array<any>, check: Array<any>) {
     return true;
 }
 function isEqualObjects(source: {}, check: {}) {
-    if (source === check) return true;
     if (
         typeof source === null ||
         typeof check === null ||
@@ -46,7 +48,7 @@ function isEqualObjects(source: {}, check: {}) {
         if (!isEqual(source[property_name], check[property_name])) return false;
     }
 
-    return true;
+    return JSON.stringify(source) === JSON.stringify(check);
 }
 
 // export ==================================================== //
