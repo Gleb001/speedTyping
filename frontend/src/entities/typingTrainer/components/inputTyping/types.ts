@@ -2,7 +2,10 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type ContainerSpeedometersType = FC<{}>
+type InputTypingType = FC<{
+    updateTextTyping: (hasError: boolean) => void,
+    isResetValue: boolean,
+}>
 
 // export ==================================================== //
-export { ContainerSpeedometersType };
+export { InputTypingType };

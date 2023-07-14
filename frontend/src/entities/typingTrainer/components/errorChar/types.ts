@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type ContainerSpeedometersType = FC<{}>
+type ErrorCharType = FC<{value: string}>
 
 // export ==================================================== //
-export { ContainerSpeedometersType };
+export {ErrorCharType};

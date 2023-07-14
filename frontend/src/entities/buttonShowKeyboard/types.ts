@@ -2,7 +2,9 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type ContainerSpeedometersType = FC<{}>
+type ButtonShowKeyboardType = FC<{
+    type: "remove" | "add",
+}>
 
 // export ==================================================== //
-export { ContainerSpeedometersType };
+export { ButtonShowKeyboardType };

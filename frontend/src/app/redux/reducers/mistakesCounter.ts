@@ -17,7 +17,7 @@ let currentSymbolSlice = createSlice({
     }
 });
 
-// // export ==================================================== //
+// export ==================================================== //
 export {currentSymbolSlice};
 export let { reset, increment } = currentSymbolSlice.actions;
 export default currentSymbolSlice.reducer;

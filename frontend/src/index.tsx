@@ -1,10 +1,10 @@
 // imports =================================================== //
-// external
+// react ----------------------------------------------------- //
 import React from "react";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import store from "@app/redux/index";
-// slices (FSD) - components
+// components ------------------------------------------------ //
 import App from "@app/index";
 
 // constants ================================================= //
@@ -13,9 +13,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // main ====================================================== //
 root.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <Provider store={store}>
             <App />
         </Provider>
-    </React.StrictMode>
+    // </React.StrictMode>
 );

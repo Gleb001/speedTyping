@@ -1,14 +1,16 @@
 // imports =================================================== //
-// external
+// react ----------------------------------------------------- //
 import React from "react";
-// slices (FSD)
+// components ------------------------------------------------ //
 import TypingSpeedometrs from "@widgets/typingSpeedometrs";
-import TypingTrainer from "@entities/inputTypingCont";
-import InputKeyboard from "@entities/inputKeyboard";
-// internal
+import TypingTrainer from "@entities/typingTrainer";
+import InputKeyboard from "@entities/keyboard";
+import ToolLine from "@widgets/toolLine";
+// constants ------------------------------------------------- //
+import getKeyboard from "@shared/constants/keyboards";
+// internal -------------------------------------------------- //
 import "./ui/index.css";
 import { HomePageType } from "./types";
-
 
 // main ====================================================== //
 let HomePage: HomePageType = ({ }) => {
@@ -16,79 +18,10 @@ let HomePage: HomePageType = ({ }) => {
         <div id="home_page">
             <TypingSpeedometrs />
             <TypingTrainer />
-            <InputKeyboard matrix_keycaps={[
-                [
-                    ["`", "~"],
-                    ["1", "!"],
-                    ["2", "@"],
-                    ["3", "#"],
-                    ["4", "$"],
-                    ["5", "%"],
-                    ["6", "^"],
-                    ["7", "&"],
-                    ["8", "*"],
-                    ["9", "("],
-                    ["0", ")"],
-                    ["-", "_"],
-                    ["=", "+"],
-                    ["◄════"]
-                ],
-                [
-                    ["tab"],
-                    ["Q"],
-                    ["W"],
-                    ["E"],
-                    ["R"],
-                    ["T"],
-                    ["Y"],
-                    ["U"],
-                    ["I"],
-                    ["O"],
-                    ["P"],
-                    ["[", "{"],
-                    ["]", "}"],
-                    ["\\", "|"],
-                ],
-                [
-                    ["caps"],
-                    ["A"],
-                    ["S"],
-                    ["D"],
-                    ["F"],
-                    ["G"],
-                    ["H"],
-                    ["J"],
-                    ["K"],
-                    ["L"],
-                    [";", ":"],
-                    ["'", "\""],
-                    ["◄════╝"],
-                ],
-                [
-                    ["shift"],
-                    ["Z"],
-                    ["X"],
-                    ["C"],
-                    ["V"],
-                    ["B"],
-                    ["N"],
-                    ["M"],
-                    [",", "<"],
-                    [".", ">"],
-                    ["/", "?"],
-                    ["shift"],
-                ],
-                [
-                    ["control"],
-                    ["cmd"],
-                    ["alt"],
-                    ["―"],
-                    ["alt"],
-                    ["fn"],
-                    ["control"],
-                    ["don't click"],
-                ],
-            ]}/>
+            <ToolLine />
+            <InputKeyboard
+                matrix_keycaps={getKeyboard("ansi", "english")}
+            />
         </div>
     );
 };

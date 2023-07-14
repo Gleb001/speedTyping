@@ -5,12 +5,10 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 type setActionType = PayloadAction<
     [keyof initialStateType, keycapType]
 >
-
 type keycapType = {
     key: KeyboardEvent["key"] | "",
     isFirst: boolean
 }
-
 type initialStateType = {
     "down": keycapType,
     "up": keycapType,

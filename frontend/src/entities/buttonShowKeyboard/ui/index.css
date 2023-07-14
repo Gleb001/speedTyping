@@ -1,0 +1,48 @@
+/* main ====================================================== */
+/* button show keyboard -------------------------------------- */
+#button_show_keyboard {
+    margin: 10px 5px;
+}
+
+/* remove keyboard icon -------------------------------------- */
+.remove_keyboard_icon {
+
+    width: 30px;
+    height: 15px;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+.remove_keyboard_icon::before,
+.remove_keyboard_icon::after {
+
+    background-color: var(--secondary-color);
+
+    width: 50%;
+    height: 1px;
+
+    content: "";
+    position: absolute;
+    left: 25%;
+
+}
+.remove_keyboard_icon::before {
+    transform: rotate(45deg);
+}
+.remove_keyboard_icon::after {
+    transform: rotate(-45deg);
+}
+
+/* add keyboard icon ----------------------------------------- */
+.add_keyboard_icon {
+
+    width: 40px;
+    height: 20px;
+
+    background: var(--icon-keyboard);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}

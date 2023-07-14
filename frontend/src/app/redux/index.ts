@@ -1,17 +1,19 @@
 // imports =================================================== //
-// external
+// redux toolkit --------------------------------------------- //
 import { configureStore } from "@reduxjs/toolkit";
-// internal
+// reducers -------------------------------------------------- //
+import inputKeycapReducer from "./reducers/keycap";
 import checkPointReducer from "./reducers/checkPoint";
-import mistakesCounter from "./reducers/mistakesCounter";
-import inputKeycap from "./reducers/keycap";
+import currentCharReducer from "./reducers/currentChar";
+import mistakesCounterReducer from "./reducers/mistakesCounter";
 
 // main ====================================================== //
 let store = configureStore({
     reducer: {
+        keycap: inputKeycapReducer,
         check_point: checkPointReducer,
-        mistakes_counter: mistakesCounter,
-        keycap: inputKeycap
+        current_char: currentCharReducer,
+        mistakes_counter: mistakesCounterReducer,
     },
 });
 

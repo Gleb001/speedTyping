@@ -1,0 +1,15 @@
+/* main ====================================================== */
+#tool_line {
+    
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+    margin: 5px 0;
+
+    box-sizing: border-box;
+    padding: 0 50px;
+
+}

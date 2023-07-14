@@ -1,7 +1,7 @@
 // imports =================================================== //
-// external
+// react ----------------------------------------------------- //
 import React, { useEffect, useState } from "react";
-// internal
+// internal -------------------------------------------------- //
 import "./ui/index.css";
 import { SpeedometerType, ColorListType } from "./types";
 
@@ -10,7 +10,7 @@ const COLORS: ColorListType = {
     "green": "--best-result-color",
     "white": "--secondary-color",
     "red": "--mistake-color",
-}
+};
 
 // inner logic main function component ======================= //
 let getStyleOn = (var_property: string) => `var(${var_property})`;

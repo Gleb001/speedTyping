@@ -2,18 +2,17 @@
 // react ----------------------------------------------------- //
 import React from "react";
 // components ------------------------------------------------ //
-import TypingSpeedometer from "@entities/typingSpeedometer";
-import ErrorSpeedometer from "@entities/errorSpeedometer";
+import ButtonShowKeyboard from "@entities/buttonShowKeyboard";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
-import { ContainerSpeedometersType } from "./types";
+import { ToolLineType } from "./types";
 
 // main ====================================================== //
-let ContainerSpeedometers: ContainerSpeedometersType = ({ }) => (
-    <div id="container_speedometers">
-        <ErrorSpeedometer /> % / <TypingSpeedometer /> cpm
+let ToolLine: ToolLineType = ({ }) => (
+    <div id="tool_line">
+        <ButtonShowKeyboard type="remove"/>
     </div>
 );
 
 // export ==================================================== //
-export default ContainerSpeedometers;
+export default ToolLine;

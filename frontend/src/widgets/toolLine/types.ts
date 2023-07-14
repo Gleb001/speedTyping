@@ -1,8 +1,8 @@
 // imports =================================================== //
-import { FC } from "react";
+import { FC, RefObject } from "react";
 
 // main ====================================================== //
-type ContainerSpeedometersType = FC<{}>
+type ToolLineType = FC<{ }>
 
 // export ==================================================== //
-export { ContainerSpeedometersType };
+export { ToolLineType };

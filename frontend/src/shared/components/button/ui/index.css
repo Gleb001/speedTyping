@@ -1,0 +1,20 @@
+/* main ====================================================== */
+.special_button {
+
+    cursor: pointer;
+
+    border: 1px solid var(--secondary-additional-color);
+    border-radius: 20px;
+
+    background-color: var(--primary-additional-color);
+    color: var(--secondary-color);
+
+    box-sizing: border-box;
+    padding: 8px 15px;
+
+    transition: border .25s linear;
+
+}
+.special_button:hover {
+    border: 1px solid var(--secondary-color);
+}

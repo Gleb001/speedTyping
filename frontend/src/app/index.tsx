@@ -1,15 +1,16 @@
 // imports =================================================== //
-// external
+// react ----------------------------------------------------- //
 import React from "react";
-// slices (FSD) - components
+// pages ----------------------------------------------------- //
 import Routing from "@pages/index";
-// internal
-import "./ui/index.css";
-import { AppType } from "./types";
+// providers ------------------------------------------------- //
 import AppProviders from "./providers";
-// tests
+// tests ----------------------------------------------------- //
 // import "@shared/helpers/index.test";
 // import "@shared/libs/index.test";
+// internal -------------------------------------------------- //
+import "./ui/index.css";
+import { AppType } from "./types";
 
 // main ====================================================== //
 let App: AppType = ({}) => AppProviders(() => <Routing />);
