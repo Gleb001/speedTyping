@@ -2,9 +2,7 @@
 import { FC } from "react";
 
 // main ====================================================== //
-type ButtonShowKeyboardType = FC<{
-    type: "remove" | "add",
-}>
+type ButtonShowKeyboardType = FC<{ }>
 
 // export ==================================================== //
 export { ButtonShowKeyboardType };

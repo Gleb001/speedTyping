@@ -1,7 +1,7 @@
 // imports =================================================== //
-// external
+// react ----------------------------------------------------- //
 import React from "react";
-// internal
+// internal -------------------------------------------------- //
 import { NameComponentType } from "./types";
 import "./ui/index.css";
 

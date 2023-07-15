@@ -27,13 +27,14 @@ let ErrorSpeedometer: ErrorSpeedometerType = ({ }) => {
 
     return (
         <Speedometer
+            measurement="%"
             current={
                 check_point.current === 0 ?
                     getValue("previous") :
                     getValue("current")
             }
             type={
-                check_point.current === 0  ?
+                check_point.current === 0 ?
                     "decrease" :
                     "none"
             }

@@ -1,10 +1,12 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
 import React from "react";
+// redux ----------------------------------------------------- //
+import { useAppSelector } from "@shared/hooks/useAppSelector";
 // components ------------------------------------------------ //
 import TypingSpeedometrs from "@widgets/typingSpeedometrs";
 import TypingTrainer from "@entities/typingTrainer";
-import InputKeyboard from "@entities/keyboard";
+import Keyboard from "@entities/keyboard";
 import ToolLine from "@widgets/toolLine";
 // constants ------------------------------------------------- //
 import getKeyboard from "@shared/constants/keyboards";
@@ -14,14 +16,20 @@ import { HomePageType } from "./types";
 
 // main ====================================================== //
 let HomePage: HomePageType = ({ }) => {
+
+    let hasKeyboard = useAppSelector(state => state.keyboard_data.has)
+
     return (
         <div id="home_page">
-            <TypingSpeedometrs />
+            {/* <TypingSpeedometrs /> */}
             <TypingTrainer />
             <ToolLine />
-            <InputKeyboard
-                matrix_keycaps={getKeyboard("ansi", "english")}
-            />
+            {
+                hasKeyboard ? 
+                <Keyboard matrix_keycaps={getKeyboard("ansi", "english")}/> :
+                ""
+            }
+            
         </div>
     );
 };

@@ -1,9 +1,17 @@
 /* main ====================================================== */
-/* keyboard */
+/* keyboard -------------------------------------------------- */
 #keyboard {
     width: 100%;
-    margin: 5px 0;
-    transform: opacity .5s linear;
+}
+
+@keyframes changed {
+    from {
+        height: var(--start-height);
+    }
+
+    to {
+        height: var(--end-height);
+    }
 }
 
 /* row keycaps */
@@ -16,6 +24,7 @@
     height: 48px;
     width: 100%;
 }
+
 .row_keycaps div {
 
     border: 1px solid;
@@ -29,11 +38,7 @@
 
     margin: 0 2px;
     height: 100%;
-
-    transition:
-        color .1s linear,
-        border-color .1s linear;
-
+    
 }
 
 /* numeric line */
@@ -54,6 +59,7 @@
     /* flex: 1.5; */
     width: 84px;
 }
+
 .row_keycaps:nth-child(3) div:last-child {
     /* flex: 2; */
     width: 120px;
@@ -64,6 +70,7 @@
     /* flex: 2; */
     width: 115px;
 }
+
 .row_keycaps:nth-child(4) div:last-child {
     width: 145px;
 }
@@ -72,42 +79,49 @@
 .row_keycaps:nth-child(5) div:nth-child(4) {
     width: 330px;
 }
+
 .row_keycaps:nth-child(5) div:nth-child(-n+3) {
     width: 62px;
 }
+
 .row_keycaps:nth-child(5) div:nth-child(7) {
     width: 62px;
 }
+
 .row_keycaps:nth-child(5) div:last-child {
     width: 90px;
 }
 
 /* disabled keycaps */
-.row_keycaps:nth-child(5) div:nth-child(6), /* fn */
-.row_keycaps:nth-child(2) div:first-child, /* tab */
-.row_keycaps:nth-child(5) div:nth-child(2) /* cmd */
+.row_keycaps:nth-child(5) div:nth-child(6),
+/* fn */
+.row_keycaps:nth-child(2) div:first-child,
+/* tab */
+.row_keycaps:nth-child(5) div:nth-child(2)
+
+/* cmd */
 {
     border-color: var(--secondary-additional-color);
     color: var(--secondary-additional-color);
 }
 
-/* active keycap */
 .no_active_keycap {
     border-color: var(--secondary-additional-color);
     color: var(--secondary-additional-color);
+
+    transition:
+        border-color .3s linear,
+        color .5s linear;
 }
 .valid_keycap {
-    /* background-color: var(--secondary-color);
-    color: var(--primary-color); */
     border-color: var(--secondary-color);
     color: var(--secondary-color);
+
+    transition: none;
 }
 .invalid_keycap {
     border-color: var(--mistake-color);
     color: var(--mistake-color);
-}
 
-/* .right_input {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-} */
+    transition: none;
+}

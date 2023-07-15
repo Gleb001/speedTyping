@@ -11,7 +11,8 @@ import { ContainerSpeedometersType } from "./types";
 // main ====================================================== //
 let ContainerSpeedometers: ContainerSpeedometersType = ({ }) => (
     <div id="container_speedometers">
-        <ErrorSpeedometer /> % / <TypingSpeedometer /> cpm
+        <ErrorSpeedometer />
+        <TypingSpeedometer  /> 
     </div>
 );
 

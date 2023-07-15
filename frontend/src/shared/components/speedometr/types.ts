@@ -15,6 +15,7 @@ interface ColorListType {
 type SpeedometerType = FC<{
     current: number,
     type: TypeSpeedometrType,
+    measurement: string,
 }>
 
 // export ==================================================== //

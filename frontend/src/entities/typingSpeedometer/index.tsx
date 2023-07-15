@@ -40,6 +40,7 @@ let TypingSpeedometer: TypingSpeedometerType = ({ }) => {
 
     return (
         <Speedometr
+            measurement="cpm"
             current={
                 check_point.current === 0 ?
                     getValue("previous") :

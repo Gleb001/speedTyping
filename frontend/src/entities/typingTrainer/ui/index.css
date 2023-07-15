@@ -1,14 +1,14 @@
 /* main ====================================================== */
 /* container text typing */
 #container_text_typing {
-    margin: 5px 0;
+    margin-top: 5px;
 }
 
 /* typing tainer */
 #typing_trainer {
 
     width: 100%;
-    margin: 10px 0;
+    margin: 5px 0;
 
     font-size: 1.25em;
     font-family: "Roboto";

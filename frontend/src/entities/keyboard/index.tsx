@@ -2,9 +2,9 @@
 // react ----------------------------------------------------- //
 import React, { useEffect, useState, useRef } from "react";
 // redux ----------------------------------------------------- //
-import { set as set_keycap } from "@app/redux/reducers/keycap";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 import { useAppDispatch } from "@shared/hooks/useAppDispatch";
+import { set as set_keycap } from "@app/redux/reducers/keycap";
 // helpers --------------------------------------------------- //
 import {
     getKeycapRef,
@@ -19,8 +19,10 @@ import { KeyboardType } from "./types";
 let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
 
     let dispatch = useAppDispatch();
+
     let keycap = useAppSelector(state => state.keycap);
     let current_char = useAppSelector(state => state.current_char);
+    let keyboard_data = useAppSelector(state => state.keyboard_data);
 
     let keyboardRef = useRef<HTMLDivElement>(null);
     let [previous_char, setPrevChar] = useState("");
@@ -63,8 +65,12 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
         );
     }
 
+    console.log(keyboard_data.height);
     return (
-        <div id="keyboard" ref={keyboardRef}>{
+        <div id="keyboard" ref={keyboardRef} style={{
+            height: keyboard_data.height + "px",
+            opacity: String(keyboard_data.height)
+        }}>{
             matrix_keycaps.map((row, index) => (
                 <div className="row_keycaps" key={`row_${index}`}>{
                     row.map((keycaps, index) => (

@@ -10,7 +10,7 @@ let Button: ButtonType = ({
     description, name, icon_className, actions = []
 }) => {
     return (
-        <button className="special_button" {...actions}>
+        <button className="special_button main_component" {...actions}>
             <div className={icon_className + " icon_button"}></div>
             <div>{name}</div>
         </button>

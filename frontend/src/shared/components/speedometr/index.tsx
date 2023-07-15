@@ -16,7 +16,9 @@ const COLORS: ColorListType = {
 let getStyleOn = (var_property: string) => `var(${var_property})`;
 
 // main ====================================================== //
-let Speedometer: SpeedometerType = ({ current, type }) => {
+let Speedometer: SpeedometerType = ({
+    current, type, measurement
+}) => {
 
     let [previous, setPrevious] = useState(0);
     let [color, setColor] = useState<string>(COLORS.white);
@@ -38,9 +40,9 @@ let Speedometer: SpeedometerType = ({ current, type }) => {
     if (isResetColor) setColor(COLORS.white);
     return (
         <span
-            className="speedometr"
-            style={{color: getStyleOn(color)}}
-        >{current}</span>
+            className="speedometer main_component"
+            style={{borderColor: getStyleOn(color)}}
+        >{current + " " + measurement}</span>
     );
 
 };

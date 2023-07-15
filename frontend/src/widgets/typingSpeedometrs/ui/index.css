@@ -1,10 +1,17 @@
 /* main ====================================================== */
+/* container speedometers ------------------------------------ */
 #container_speedometers {
 
-    margin: 20px 0;
-
-    font-size: 2.15em;
+    font-size: 1em;
     font-family: "Roboto";
     font-weight: 300;
 
+}
+
+/* child container_speedometers ------------------------------ */
+#container_speedometers .speedometer:nth-child(n) {
+    margin-right: 7px;
+}
+#container_speedometers .speedometer:last-child {
+    margin-right: 0;
 }
