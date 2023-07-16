@@ -6,7 +6,7 @@ import { useAppSelector } from "@shared/hooks/useAppSelector";
 import { useAppDispatch } from "@shared/hooks/useAppDispatch";
 import { set as set_keyboard_data } from "@app/redux/reducers/keyboardData";
 // helpers --------------------------------------------------- //
-import getHeightKeyboard from "./helpers";
+import { actionOnKeyboard } from "./helpers";
 // libs ------------------------------------------------------ //
 import { playAnimationCSS } from "@shared/libs";
 // components ------------------------------------------------ //
@@ -19,81 +19,33 @@ import { ButtonShowKeyboardType } from "./types";
 let ButtonShowKeyboard: ButtonShowKeyboardType = ({ }) => {
 
     let dispatch = useAppDispatch();
-    let keyboard_data = useAppSelector(state => state.keyboard_data);
+    let hasKeyboard = useAppSelector(state => state.keyboard_data.has);
 
     let [hasProcess, setHasProcess] = useState(false);
-
-    function showKeyboard() {
+    function handleClick(type: "show" | "hide") {
         if (hasProcess) return;
         setHasProcess(true);
 
-        dispatch(set_keyboard_data({ key: "has", value: true }));
+        if (type === "show") dispatch(set_keyboard_data({ key: "has", value: true }));
         setTimeout(() => {
-            let keyboardRef = document.getElementById("keyboard");
-            if (!keyboardRef) return;
-
-            keyboardRef.style.setProperty("--start-height", "0px");
-            keyboardRef.style.setProperty("--end-height", getHeightKeyboard(keyboardRef) + "px");
-
-            playAnimationCSS(
-                keyboardRef,
-                `
-                    appear linear 400ms forwards,
-                    changed linear 400ms forwards
-                `,
-                600
-            ).then(() => {
-                dispatch(set_keyboard_data({
-                    key: "height",
-                    value: getHeightKeyboard(keyboardRef!),
-                }));
-                setHasProcess(false);
-            })
-        });
-    }
-    function hideKeyboard() {
-        if (hasProcess) return;
-        setHasProcess(true);
-
-        setTimeout(() => {
-            let keyboardRef = document.getElementById("keyboard");
-            if (!keyboardRef) return;
-
-            keyboardRef.style.setProperty("--start-height", getHeightKeyboard(keyboardRef) + "px");
-            keyboardRef.style.setProperty("--end-height", "0px");
-
-            console.log(keyboardRef);
-            playAnimationCSS(
-                keyboardRef,
-                `
-                    disappear linear 400ms forwards,
-                    changed linear 400ms forwards
-                `,
-                600
-            ).then(() => {
-                dispatch(set_keyboard_data({
-                    key: "has", value: false,
-                }));
-                dispatch(set_keyboard_data({
-                    key: "height", value: 0,
-                }));
+            actionOnKeyboard(type).then((height) => {
+                if (type === "hide") dispatch(set_keyboard_data({ key: "has", value: false }));
+                dispatch(set_keyboard_data({ key: "height", value: height }));
                 setHasProcess(false);
             });
-        })
+        });
     }
 
     return (
         <Button
             description="remove keyboard"
             icon_className={
-                keyboard_data.has ?
-                    "remove_keyboard_icon" :
-                    "add_keyboard_icon"
+                hasKeyboard ?
+                    "keyboard_closure_icon" :
+                    "keyboard_opening_icon"
             }
             actions={{
-                "onClick": keyboard_data.has ?
-                    hideKeyboard :
-                    showKeyboard
+                "onClick": () => handleClick(hasKeyboard ? "hide" : "show")
             }}
         />
     );

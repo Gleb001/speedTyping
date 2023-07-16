@@ -12,6 +12,7 @@ import { isEqual } from "@shared/helpers";
 // internal -------------------------------------------------- //
 import "./ui/index.css"
 import { InputTypingType } from "./types";
+
 // main ====================================================== //
 let InputTyping: InputTypingType = ({
     updateTextTyping,
@@ -22,11 +23,11 @@ let InputTyping: InputTypingType = ({
     let current_char = useAppSelector(state => state.current_char);
     let keycap = useAppSelector(state => state.keycap);
 
+    let [hasError, setHasError]      = useState(false);
+    let [false_input, setFalseInput] = useState("");
+
     let [value, setValue] = useState("");
     if (isResetValue && value !== "") setValue("");
-
-    let [hasError, setHasError] = useState(false);
-    let [false_input, setFalseInput] = useState("");
 
     let isRequired = () => false_input === "";
     if (!isRequired()) setTimeout(() => setFalseInput(""), 200);
@@ -61,25 +62,22 @@ let InputTyping: InputTypingType = ({
                 );
             }}
             onBlur={() => {
-                dispatch(
-                    set_current_char({
-                        value: current_char.value,
-                        isFocused: false
-                    })
-                );
+                set_current_char({
+                    value: current_char.value,
+                    isFocused: false
+                })
             }}
 
-            onKeyUp={(event) =>{
+            onKeyUp={(event) => {
                 handleKeyUp(event);
-                dispatch(set_keycap([ "up", getKeycapOnKeyEvent(event) ]));
+                dispatch(set_keycap(["up", getKeycapOnKeyEvent(event)]));
             }}
             onKeyDown={(event) => {
                 if (isEqual(getKeycapOnKeyEvent(event), keycap.down)) return;
-                dispatch(set_keycap([ "down", getKeycapOnKeyEvent(event) ]));
+                dispatch(set_keycap(["down", getKeycapOnKeyEvent(event)]));
             }}
-            
-            onChange={(event) => { }}
 
+            onChange={(event) => { }}
         />
     );
 

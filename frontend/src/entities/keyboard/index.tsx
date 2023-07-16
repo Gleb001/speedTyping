@@ -22,7 +22,7 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
 
     let keycap = useAppSelector(state => state.keycap);
     let current_char = useAppSelector(state => state.current_char);
-    let keyboard_data = useAppSelector(state => state.keyboard_data);
+    let height_keyboard = useAppSelector(state => state.keyboard_data.height);
 
     let keyboardRef = useRef<HTMLDivElement>(null);
     let [previous_char, setPrevChar] = useState("");
@@ -65,11 +65,10 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
         );
     }
 
-    console.log(keyboard_data.height);
     return (
         <div id="keyboard" ref={keyboardRef} style={{
-            height: keyboard_data.height + "px",
-            opacity: String(keyboard_data.height)
+            height: height_keyboard + "px",
+            opacity: String(height_keyboard)
         }}>{
             matrix_keycaps.map((row, index) => (
                 <div className="row_keycaps" key={`row_${index}`}>{

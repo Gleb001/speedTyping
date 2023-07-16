@@ -3,8 +3,7 @@
 #keyboard {
     width: 100%;
 }
-
-@keyframes changed {
+@keyframes changeHeightKeyboard {
     from {
         height: var(--start-height);
     }
@@ -14,7 +13,7 @@
     }
 }
 
-/* row keycaps */
+/* row keycaps ----------------------------------------------- */
 .row_keycaps {
     display: inline-flex;
     align-items: center;
@@ -24,7 +23,6 @@
     height: 48px;
     width: 100%;
 }
-
 .row_keycaps div {
 
     border: 1px solid;
@@ -38,73 +36,74 @@
 
     margin: 0 2px;
     height: 100%;
+
+    position: relative;
     
 }
 
-/* numeric line */
+/* numeric line ---------------------------------------------- */
 .row_keycaps:nth-child(1) div:last-child {
     /* flex: 1.75; */
     width: 100px;
 }
 
-/* first chars line */
+/* first chars line ------------------------------------------ */
 .row_keycaps:nth-child(2) div:first-child,
 .row_keycaps:nth-child(2) div:last-child {
     /* flex: 1.4; */
     width: 74px;
 }
 
-/* second chars line */
+/* second chars line ----------------------------------------- */
 .row_keycaps:nth-child(3) div:first-child {
     /* flex: 1.5; */
     width: 84px;
 }
+.row_keycaps:nth-child(3) div:nth-child(5)::after,
+.row_keycaps:nth-child(3) div:nth-child(8)::after {
 
+    content: "—";
+
+    height: auto;
+    width: auto;
+
+    position: absolute;
+    bottom: 0;
+
+}
 .row_keycaps:nth-child(3) div:last-child {
     /* flex: 2; */
     width: 120px;
 }
 
-/* third chars line */
-.row_keycaps:nth-child(4) div:first-child {
-    /* flex: 2; */
-    width: 115px;
-}
+/* third chars line ------------------------------------------ */
+.row_keycaps:nth-child(4) div:first-child { width: 115px; }
+.row_keycaps:nth-child(4) div:last-child { width: 145px; }
 
-.row_keycaps:nth-child(4) div:last-child {
-    width: 145px;
-}
-
-/* system line */
+/* system line ----------------------------------------------- */
 .row_keycaps:nth-child(5) div:nth-child(4) {
     width: 330px;
 }
-
 .row_keycaps:nth-child(5) div:nth-child(-n+3) {
     width: 62px;
 }
-
 .row_keycaps:nth-child(5) div:nth-child(7) {
     width: 62px;
 }
-
 .row_keycaps:nth-child(5) div:last-child {
     width: 90px;
 }
 
-/* disabled keycaps */
-.row_keycaps:nth-child(5) div:nth-child(6),
-/* fn */
-.row_keycaps:nth-child(2) div:first-child,
-/* tab */
-.row_keycaps:nth-child(5) div:nth-child(2)
-
-/* cmd */
+/* disabled keycaps ------------------------------------------ */
+.row_keycaps:nth-child(5) div:nth-child(6), /* fn */
+.row_keycaps:nth-child(2) div:first-child,  /* tab */
+.row_keycaps:nth-child(5) div:nth-child(2)  /* cmd */
 {
     border-color: var(--secondary-additional-color);
     color: var(--secondary-additional-color);
 }
 
+/* type keycap ----------------------------------------------- */
 .no_active_keycap {
     border-color: var(--secondary-additional-color);
     color: var(--secondary-additional-color);

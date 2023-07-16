@@ -47,7 +47,6 @@ let getClassNameKeycap: getClassNameKeycapType = (
     if (type === "up") return "no_active_keycap";
     return keycap === symbol ? "valid_keycap" : "invalid_keycap";
 };
-
 let getCurrentKeycaps: getCurrentKeycapsType = (
     keyboardRef, matrix_keycaps, char
 ) => {

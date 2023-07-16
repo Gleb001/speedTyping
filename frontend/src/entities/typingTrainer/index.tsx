@@ -45,7 +45,6 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
             dispatch(reset_point());
 
         }
-        // ?
         if (!isGetActiveText) {
             dispatch(
                 set_current_char({
@@ -54,7 +53,6 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
                 })
             );
         }
-        // 
     }, [active_text]);
 
     function updateTextTyping(hasError: boolean) {

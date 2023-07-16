@@ -21,17 +21,17 @@ let HomePage: HomePageType = ({ }) => {
 
     return (
         <div id="home_page">
-            {/* <TypingSpeedometrs /> */}
             <TypingTrainer />
             <ToolLine />
             {
                 hasKeyboard ? 
-                <Keyboard matrix_keycaps={getKeyboard("ansi", "english")}/> :
-                ""
+                    <Keyboard
+                        matrix_keycaps={getKeyboard("ansi", "english")}
+                    /> : ""
             }
-            
         </div>
     );
+    
 };
 
 // export ==================================================== //

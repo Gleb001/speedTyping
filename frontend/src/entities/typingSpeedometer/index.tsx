@@ -3,18 +3,14 @@
 import React, { useEffect, useState } from "react";
 // helpers --------------------------------------------------- //
 import convertToMinutes from "@shared/helpers/convertToMinutes";
+import { getSpeed } from "./helpers";
 // redux ----------------------------------------------------- //
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // components ------------------------------------------------ //
 import Speedometr from "@shared/components/speedometr";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
-import { TypingSpeedometerType, TotalSpeedType } from "./types";
-
-// inner logic main function component ======================= //
-const getSpeed: TotalSpeedType = (length_char, time) => (
-    time !== 0 ? Math.floor(length_char / time) : 0
-);
+import { TypingSpeedometerType } from "./types";
 
 // main ====================================================== //
 let TypingSpeedometer: TypingSpeedometerType = ({ }) => {
