@@ -8,7 +8,7 @@ import { SpeedometerType, ColorListType } from "./types";
 // constants ================================================= //
 const COLORS: ColorListType = {
     "green": "--best-result-color",
-    "white": "--secondary-color",
+    "white": "--secondary-additional-color",
     "red": "--mistake-color",
 };
 

@@ -26,7 +26,6 @@ import {
 let TypingTrainer: TypingTrainerType = ({ }) => {
 
     let dispatch = useAppDispatch();
-    let current_char = useAppSelector(state => state.current_char);
 
     let textTypingRef = useRef<TextTypingRefType>(null);
     let [disabled_text, setDisabledText] = useState<DisabledTextType[]>([]);
@@ -34,24 +33,22 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
 
     useEffect(() => {
         let isGetActiveText = (active_text === "");
-        if (isGetActiveText || isResetTextTyping(textTypingRef.current)) {
+        if (
+            isGetActiveText ||
+            isResetTextTyping(textTypingRef.current)
+        ) {
 
             if (isGetActiveText) {
-                getTextsTyping().then(result => setActiveText(result));
+                getTextsTyping().then(result => {
+                    setActiveText(result);
+                    set_current_char(active_text[0]);
+                });
             }
 
             setDisabledText([]);
             dispatch(reset_mistakes());
             dispatch(reset_point());
 
-        }
-        if (!isGetActiveText) {
-            dispatch(
-                set_current_char({
-                    value: active_text[0],
-                    isFocused: current_char.isFocused
-                })
-            );
         }
     }, [active_text]);
 
@@ -72,6 +69,7 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
         setDisabledText(disabled_text);
 
         setActiveText(active_text.slice(1));
+        dispatch(set_current_char(active_text[1]));
         dispatch(increment_point());
 
     }
@@ -80,10 +78,8 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
         <div id="typing_trainer">
             <InputTyping
                 updateTextTyping={updateTextTyping}
-                isResetValue={(
-                    disabled_text.length === 0 ||
-                    active_text === ""
-                )}
+                active_char={active_text[0]}
+                isResetValue={disabled_text.length === 0}
             />
             <p id="text_typing" ref={textTypingRef} >
                 <span className="disabled_text before_disabled_text" >{

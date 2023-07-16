@@ -7,7 +7,7 @@ import {
     getKeycapRefType,
     getClassNameKeycapType,
     getCurrentKeycapsType,
-    showKeycapsToType,
+    actionOnKeycapsType,
 } from "./types";
 
 // main ====================================================== //
@@ -50,6 +50,7 @@ let getClassNameKeycap: getClassNameKeycapType = (
 let getCurrentKeycaps: getCurrentKeycapsType = (
     keyboardRef, matrix_keycaps, char
 ) => {
+    if (char === "") return [];
 
     let keycap = { key: char.toUpperCase(), isFirst: true };
     let keycap_element = getKeycapRef(keyboardRef, matrix_keycaps, keycap);
@@ -70,8 +71,8 @@ let getCurrentKeycaps: getCurrentKeycapsType = (
     ];
 
 };
-let showKeycapsTo: showKeycapsToType = (
-    keyboardRef, matrix_keycaps, char, isActive,
+let actionOnKeycaps: actionOnKeycapsType = (
+    type, keyboardRef, matrix_keycaps, char,
 ) => {
     let current_keycaps = getCurrentKeycaps(
         keyboardRef,
@@ -81,10 +82,9 @@ let showKeycapsTo: showKeycapsToType = (
     current_keycaps.forEach(keycapRef => {
         if (keycapRef) {
             keycapRef.style.cssText =
-                isActive ?
+                type === "show" ?
                     `border-color: var(--secondary-color);
                      color: var(--secondary-color);` : ``;
-            // keycapRef.classList.remove("invalid_keycap");
         }
     });
 };
@@ -92,7 +92,7 @@ let showKeycapsTo: showKeycapsToType = (
 // export ==================================================== //
 export {
     getKeycapRef,
-    showKeycapsTo,
+    actionOnKeycaps,
     getCurrentKeycaps,
     getPositionKeycap,
     getClassNameKeycap,

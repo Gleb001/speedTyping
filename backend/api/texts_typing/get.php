@@ -16,7 +16,7 @@
     // queries ----------------------------------------------- //
     $QUERIES = (object) [
         "GET" => $DATA_BASE_HANDLER->prepare(
-            $TEXTS_TYPING_QUERIES_BODIES["GET"](rand(4, 4))
+            $TEXTS_TYPING_QUERIES_BODIES["GET"](rand(1, 4))
         )
     ];
 

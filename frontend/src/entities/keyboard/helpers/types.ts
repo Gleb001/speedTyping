@@ -35,13 +35,13 @@ type getCurrentKeycapsType = (
     keyboardRef: HTMLDivElement | null,
     matrix_keycaps: matrixKeycapType,
     keycap: string
-) => [HTMLElement | undefined, HTMLElement | undefined]
+) => [HTMLElement | undefined, HTMLElement | undefined] | []
 
-type showKeycapsToType = (
+type actionOnKeycapsType = (
+    type: "show" | "hide",
     keyboardRef: HTMLDivElement | null,
     matrix_keycaps: matrixKeycapType,
     char: string,
-    isActive: boolean,
 ) => void
 
 // export ==================================================== //
@@ -50,5 +50,5 @@ export {
     getKeycapRefType,
     getClassNameKeycapType,
     getCurrentKeycapsType,
-    showKeycapsToType,
+    actionOnKeycapsType,
 };

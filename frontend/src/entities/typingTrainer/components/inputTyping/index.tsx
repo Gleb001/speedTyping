@@ -17,13 +17,13 @@ import { InputTypingType } from "./types";
 let InputTyping: InputTypingType = ({
     updateTextTyping,
     isResetValue,
+    active_char,
 }) => {
 
     let dispatch = useAppDispatch();
-    let current_char = useAppSelector(state => state.current_char);
     let keycap = useAppSelector(state => state.keycap);
 
-    let [hasError, setHasError]      = useState(false);
+    let [hasError, setHasError] = useState(false);
     let [false_input, setFalseInput] = useState("");
 
     let [value, setValue] = useState("");
@@ -32,14 +32,14 @@ let InputTyping: InputTypingType = ({
     let isRequired = () => false_input === "";
     if (!isRequired()) setTimeout(() => setFalseInput(""), 200);
 
-    function handleKeyUp(event: React.KeyboardEvent) {
+    function handleKeyUp(event: React.KeyboardEvent<HTMLInputElement>) {
         let inputKey = event.key === "Enter" ? "¶" : event.key;
         if (inputKey.length > 1) return;
 
-        if (current_char.value === inputKey && isRequired()) {
+        if (active_char === inputKey && isRequired()) {
             setHasError(false);
             updateTextTyping(hasError);
-            setValue(value + current_char.value);
+            setValue(value + active_char);
         } else {
             setHasError(true);
             setFalseInput(false_input + inputKey);
@@ -53,20 +53,8 @@ let InputTyping: InputTypingType = ({
             value={value + false_input}
             required={isRequired()}
 
-            onFocus={() => {
-                dispatch(
-                    set_current_char({
-                        value: current_char.value,
-                        isFocused: true
-                    })
-                );
-            }}
-            onBlur={() => {
-                set_current_char({
-                    value: current_char.value,
-                    isFocused: false
-                })
-            }}
+            onFocus={() => dispatch(set_current_char(active_char))}
+            onBlur={() => dispatch(set_current_char(""))}
 
             onKeyUp={(event) => {
                 handleKeyUp(event);

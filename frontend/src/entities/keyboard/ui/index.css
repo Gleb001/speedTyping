@@ -109,8 +109,8 @@
     color: var(--secondary-additional-color);
 
     transition:
-        border-color .3s linear,
-        color .5s linear;
+        border-color .2s linear,
+        color .2s linear;
 }
 .valid_keycap {
     border-color: var(--secondary-color);

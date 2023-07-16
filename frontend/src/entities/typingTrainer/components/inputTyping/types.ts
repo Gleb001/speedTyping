@@ -5,6 +5,7 @@ import { FC } from "react";
 type InputTypingType = FC<{
     updateTextTyping: (hasError: boolean) => void,
     isResetValue: boolean,
+    active_char: string,
 }>
 
 // export ==================================================== //

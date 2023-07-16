@@ -9,7 +9,7 @@ import { set as set_keycap } from "@app/redux/reducers/keycap";
 import {
     getKeycapRef,
     getClassNameKeycap,
-    showKeycapsTo
+    actionOnKeycaps
 } from "./helpers";
 // special --------------------------------------------------- //
 import "./ui/index.css";
@@ -28,29 +28,11 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
     let [previous_char, setPrevChar] = useState("");
 
     useEffect(() => actionOnKeycap("down"), [keycap.down]);
+    useEffect(useKeyboardAssistent, [current_char]);
     useEffect(() => {
         actionOnKeycap("up");
         dispatch(set_keycap(["down", { key: "", isFirst: false }]));
     }, [keycap.up])
-    useEffect(() => {
-        if (current_char.isFocused) {
-            showKeycapsTo(
-                keyboardRef.current,
-                matrix_keycaps,
-                current_char.value,
-                true
-            );
-        }
-        if (!current_char.isFocused || previous_char !== current_char.value) {
-            showKeycapsTo(
-                keyboardRef.current,
-                matrix_keycaps,
-                previous_char,
-                false
-            );
-            setPrevChar(current_char.value);
-        }
-    }, [current_char]);
 
     function actionOnKeycap(type: "up" | "down") {
         let keycap_element = getKeycapRef(
@@ -61,8 +43,23 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
         if (!keycap_element) return;
 
         keycap_element.className = getClassNameKeycap(
-            type, current_char.value, keycap[type].key
+            type, current_char, keycap[type].key
         );
+    }
+    function useKeyboardAssistent(){
+        actionOnKeycaps(
+            "hide",
+            keyboardRef.current,
+            matrix_keycaps,
+            previous_char,
+        );
+        actionOnKeycaps(
+            "show",
+            keyboardRef.current,
+            matrix_keycaps,
+            current_char,
+        );
+        setPrevChar(current_char);
     }
 
     return (
@@ -70,16 +67,16 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
             height: height_keyboard + "px",
             opacity: String(height_keyboard)
         }}>{
-            matrix_keycaps.map((row, index) => (
-                <div className="row_keycaps" key={`row_${index}`}>{
-                    row.map((keycaps, index) => (
-                        <div key={`cell_${index}`} className="no_active_keycap">{
-                            keycaps.join(" ")
-                        }</div>
-                    ))
-                }</div>
-            ))
-        }</div>
+                matrix_keycaps.map((row, index) => (
+                    <div className="row_keycaps" key={`row_${index}`}>{
+                        row.map((keycaps, index) => (
+                            <div key={`cell_${index}`} className="no_active_keycap">{
+                                keycaps.join(" ")
+                            }</div>
+                        ))
+                    }</div>
+                ))
+            }</div>
     );
 
 };

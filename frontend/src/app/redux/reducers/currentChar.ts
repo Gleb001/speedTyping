@@ -2,22 +2,19 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 // types ===================================================== //
-interface initialStateType {
-    value: string,
-    isFocused: boolean,
-}
+// interface initialStateType {
+//     current: string,
+//     previous: string,
+// }
 
 // main ====================================================== //
 let currentSymbolSlice = createSlice({
     name: "current-symbol",
-    initialState: {
-        value: "",
-        isFocused: false
-    } as initialStateType,
+    initialState: "",
     reducers: {
         set: (
             state,
-            action: PayloadAction<initialStateType>
+            action: PayloadAction<string>
         ) => action.payload,
     }
 });

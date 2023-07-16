@@ -8,7 +8,7 @@ type TypeSpeedometrType = "increase" | "decrease" | "none"
 
 // compose --------------------------------------------------- //
 interface ColorListType {
-    "white": "--secondary-color",
+    "white": "--secondary-additional-color",
     "green": "--best-result-color",
     "red": "--mistake-color",
 }
