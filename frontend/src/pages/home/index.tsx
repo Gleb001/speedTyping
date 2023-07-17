@@ -4,7 +4,6 @@ import React from "react";
 // redux ----------------------------------------------------- //
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // components ------------------------------------------------ //
-import TypingSpeedometrs from "@widgets/typingSpeedometrs";
 import TypingTrainer from "@entities/typingTrainer";
 import Keyboard from "@entities/keyboard";
 import ToolLine from "@widgets/toolLine";
@@ -24,14 +23,14 @@ let HomePage: HomePageType = ({ }) => {
             <TypingTrainer />
             <ToolLine />
             {
-                hasKeyboard ? 
+                hasKeyboard ?
                     <Keyboard
                         matrix_keycaps={getKeyboard("ansi", "english")}
                     /> : ""
             }
-        </div>
+        </div >
     );
-    
+
 };
 
 // export ==================================================== //

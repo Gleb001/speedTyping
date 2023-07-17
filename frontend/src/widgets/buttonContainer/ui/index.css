@@ -1,0 +1,11 @@
+.button_container {
+    display: flex;
+    align-items: center;
+}
+
+.button_container button:nth-child(n) {
+    margin-right: 5px;
+}
+.button_container button:last-child {
+    margin-right: 0;
+}

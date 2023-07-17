@@ -23,6 +23,9 @@ let Speedometer: SpeedometerType = ({
     let [previous, setPrevious] = useState(0);
     let [color, setColor] = useState<string>(COLORS.white);
 
+    let isResetColor = type === "none" && color !== COLORS.white;
+    if (isResetColor) setColor(COLORS.white);
+
     useEffect(() => {
 
         let isDisabled = type === "none" || (current === 0 && previous === 0);
@@ -36,8 +39,6 @@ let Speedometer: SpeedometerType = ({
 
     }, [type]);
 
-    let isResetColor = type === "none" && color !== COLORS.white;
-    if (isResetColor) setColor(COLORS.white);
     return (
         <span
             className="speedometer main_component"

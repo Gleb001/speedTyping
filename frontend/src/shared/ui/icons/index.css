@@ -1,0 +1,8 @@
+/* imports =================================================== */
+@import url("./icon_fonts.css");
+
+/* main ====================================================== */
+:root {
+    --icon-speed-typing: url("./images/speed_typing.png");
+    --icon-keyboard:     url("./images/keyboard_icon.png");
+}

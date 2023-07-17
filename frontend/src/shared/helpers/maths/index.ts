@@ -6,6 +6,14 @@ const getPercent = (
     let percent = (part / total) * 100;
     return Math.trunc(percent * accuracy_coef) / accuracy_coef;
 };
+const range = (
+    value: number, start: number, end: number,
+) => {
+    return start > end   ? NaN   :
+           value > end   ? end   :
+           value < start ? start :
+           value;
+}
 
 // export ==================================================== //
-export default getPercent;
+export {getPercent, range};

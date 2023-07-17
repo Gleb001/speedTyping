@@ -2,7 +2,7 @@
 // react ----------------------------------------------------- //
 import React from "react";
 // helpers --------------------------------------------------- //
-import getPercent from "@shared/helpers/maths";
+import {getPercent} from "@shared/helpers/maths";
 // redux ----------------------------------------------------- //
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // components ------------------------------------------------ //

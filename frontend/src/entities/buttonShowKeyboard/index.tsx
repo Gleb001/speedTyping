@@ -38,14 +38,22 @@ let ButtonShowKeyboard: ButtonShowKeyboardType = ({ }) => {
 
     return (
         <Button
-            description="remove keyboard"
+            description={
+                hasKeyboard ?
+                    "hide keyboard" :
+                    "show keyboard"
+            }
             icon_className={
                 hasKeyboard ?
                     "keyboard_closure_icon" :
                     "keyboard_opening_icon"
             }
             actions={{
-                "onClick": () => handleClick(hasKeyboard ? "hide" : "show")
+                "onClick": () => handleClick(
+                    hasKeyboard ?
+                        "hide" :
+                        "show"
+                )
             }}
         />
     );

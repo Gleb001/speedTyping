@@ -3,20 +3,20 @@
 import React, { useState, useRef, useEffect } from "react";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
-import { ButtonType } from "./types";
+import {HintContainerType} from "./types";
 
 // main ====================================================== //
-let Button: ButtonType = ({
-    description, name, icon_className, actions = []
-}) => {
+let HintContainer: HintContainerType = ({
+    description
+}, children: JSX.Element[]) => {
 
-    let buttonRef = useRef<HTMLButtonElement>(null);
+    let hintRef = useRef<HTMLDivElement>(null);
     let [hasDescription, setHasDescription] = useState(false);
     let [timeoutRef, setTimeoutRef] = useState<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        if (!buttonRef.current || !description) return;
-        buttonRef.current.style.setProperty(
+        if (!hintRef.current || !description) return;
+        hintRef.current.style.setProperty(
             "--description-value",
             hasDescription ? `"${description}"` : ""
         );
@@ -30,10 +30,10 @@ let Button: ButtonType = ({
         }
     }
     function handleMouseMove(event: React.MouseEvent) {
-        if (buttonRef.current && hasDescription) {
+        if (hintRef.current && hasDescription) {
 
-            let beforeRef = window.getComputedStyle(buttonRef.current, ":before");
-            let button_position = buttonRef.current.getBoundingClientRect();
+            let beforeRef = window.getComputedStyle(hintRef.current, ":before");
+            let button_position = hintRef.current.getBoundingClientRect();
 
             let isHandleLeave = (
                 event.clientX - button_position.x > button_position.width ||
@@ -45,11 +45,11 @@ let Button: ButtonType = ({
 
             let height_description = Number(beforeRef.height.slice(0, -2));
             let width_description = Number(beforeRef.height.slice(0, -2));
-            buttonRef.current.style.setProperty(
+            hintRef.current.style.setProperty(
                 "--top-position",
                 event.clientY - button_position.y - height_description - 5 + "px"
             );
-            buttonRef.current.style.setProperty(
+            hintRef.current.style.setProperty(
                 "--left-position",
                 event.clientX - button_position.x - width_description - 5 + "px"
             );
@@ -64,9 +64,9 @@ let Button: ButtonType = ({
     }
 
     return (
-        <button
-            className="special_button main_component"
-            ref={buttonRef}
+        <div
+            className="hint_container"
+            ref={hintRef}
 
             onMouseMove={(event) => {
                 timeoutCursorHold();
@@ -74,13 +74,9 @@ let Button: ButtonType = ({
             }}
             onMouseLeave={handleMouseLeave}
 
-            {...actions}
-        >
-            <div className={icon_className + " icon_button"}></div>
-            <div>{name}</div>
-        </button>
+        >{...children}</div>
     );
 };
 
 // export ==================================================== //
-export default Button;
+export default HintContainer;

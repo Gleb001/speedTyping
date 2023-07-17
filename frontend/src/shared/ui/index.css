@@ -3,12 +3,11 @@
 @import url("./styles/normalize.css");
 @import url("./styles/variables.css");
 @import url("./styles/animations.css");
-/* components ------------------------------------------------ */
 @import url("./styles/main_component.css");
 /* fonts ----------------------------------------------------- */
-@import url("./fonts/fonts.css");
-/* images ---------------------------------------------------- */
-@import url("./images/icons.css");
+@import url("./fonts/index.css");
+/* icons ----------------------------------------------------- */
+@import url("./icons/index.css");
 
 /* main ====================================================== */
 body {

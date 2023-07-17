@@ -9,7 +9,7 @@ interface ActionType {
 }
 
 type ButtonType = FC<{
-    description: string | number,
+    description?: string,
     name?: string | number,
     icon_className?: string,
     actions?: ActionType

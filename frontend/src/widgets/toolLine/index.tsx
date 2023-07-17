@@ -1,8 +1,8 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
 import React from "react";
-// components ------------------------------------------------ //
-import ButtonShowKeyboard from "@entities/buttonShowKeyboard";
+// widgets --------------------------------------------------- //
+import ButtonContainer from "@widgets/buttonContainer";
 import ContainerSpeedometers from "@widgets/typingSpeedometrs";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
@@ -11,7 +11,7 @@ import { ToolLineType } from "./types";
 // main ====================================================== //
 let ToolLine: ToolLineType = ({ }) => (
     <div id="tool_line">
-        <ButtonShowKeyboard />
+        <ButtonContainer />
         <ContainerSpeedometers />
     </div>
 );

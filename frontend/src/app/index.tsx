@@ -5,7 +5,7 @@ import React from "react";
 import Routing from "@pages/index";
 // providers ------------------------------------------------- //
 import AppProviders from "./providers";
-// tests ----------------------------------------------------- //
+// tests in browser's console -------------------------------- //
 // import "@shared/helpers/index.test";
 // import "@shared/libs/index.test";
 // internal -------------------------------------------------- //

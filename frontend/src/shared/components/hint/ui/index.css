@@ -1,8 +1,5 @@
-/* main ====================================================== */
-.special_button {
-
-    cursor: pointer;
-
+.hint_container {
+    
     font-family: "Roboto";
     font-weight: 300;
 
@@ -13,11 +10,12 @@
     --description-value: ;
 
 }
-.special_button:hover {
+
+.hint_container:hover {
     border: 1px solid var(--secondary-color);
 }
 
-.special_button:before {
+.hint_container:before {
 
     content: var(--description-value);
 

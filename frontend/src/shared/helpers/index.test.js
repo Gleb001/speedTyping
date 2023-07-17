@@ -4,7 +4,7 @@ import Test from "@shared/libs/testAPI";
 // internal -------------------------------------------------- //
 import testingIsEqual from "./isEqual/index.test";
 import testingSplitBy from "./splitBy/index.test";
-import testingGetPercent from "./maths/index.test";
+import {testingGetPercent, testingRange} from "./maths/index.test";
 import testingIsEmptyObject from "./isEmptyObject/index.test";
 import testingConvertToMinutes from "./convertToMinutes/index.test";
 import testingGetChildHTMLElements from "./getChildHTMLElements/index.test";
@@ -19,5 +19,6 @@ Test("Testing helpers  (path: @shared/helpers)", [
     testingSplitBy,
     testingIsEqual,
     testingIsChar,
-    testingGetPercent
+    testingGetPercent,
+    testingRange,
 ]);
