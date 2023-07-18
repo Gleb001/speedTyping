@@ -47,6 +47,8 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
         );
     }
     function useKeyboardAssistent(){
+        console.log(current_char);
+        console.log(previous_char);
         actionOnKeycaps(
             "hide",
             keyboardRef.current,

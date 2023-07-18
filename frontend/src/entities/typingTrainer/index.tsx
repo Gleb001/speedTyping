@@ -26,6 +26,7 @@ import {
 let TypingTrainer: TypingTrainerType = ({ }) => {
 
     let dispatch = useAppDispatch();
+    let hasKeyboard = useAppSelector(state => state.keyboard_data.has);
 
     let textTypingRef = useRef<TextTypingRefType>(null);
     let [disabled_text, setDisabledText] = useState<DisabledTextType[]>([]);
@@ -40,8 +41,8 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
 
             if (isGetActiveText) {
                 getTextsTyping().then(result => {
-                    setActiveText(result);
-                    set_current_char(active_text[0]);
+                    setActiveText(result[0]);
+                    if (hasKeyboard) dispatch(set_current_char(result[0][0]));
                 });
             }
 
@@ -70,9 +71,7 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
 
         setActiveText(active_text.slice(1));
         dispatch(increment_point());
-        if (active_text[1]) {
-            dispatch(set_current_char(active_text[1]));
-        }
+        dispatch(set_current_char(active_text.length > 1 ? active_text[1] : ""));
 
     }
 

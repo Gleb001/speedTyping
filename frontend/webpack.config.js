@@ -18,10 +18,10 @@ const PATHS = {
 
 // export ==================================================== //
 module.exports = {
-    devtool: "source-map",
+    // devtool: "source-map",
     watchOptions: { ignored: "**/node_modules" },
     entry: path.resolve(__dirname, "./src/index.tsx"),
-    stats: { errorDetails: true }, // ?
+    stats: { errorDetails: true },
     module: {
         rules: [
             {
