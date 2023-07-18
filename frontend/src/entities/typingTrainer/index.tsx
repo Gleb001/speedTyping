@@ -69,8 +69,10 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
         setDisabledText(disabled_text);
 
         setActiveText(active_text.slice(1));
-        dispatch(set_current_char(active_text[1]));
         dispatch(increment_point());
+        if (active_text[1]) {
+            dispatch(set_current_char(active_text[1]));
+        }
 
     }
 

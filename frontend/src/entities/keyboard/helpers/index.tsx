@@ -1,5 +1,5 @@
 // imports =================================================== //
-// external -------------------------------------------------- //
+// helpers --------------------------------------------------- //
 import { isChar, isUpperCase } from "@shared/helpers/withString";
 // internal -------------------------------------------------- //
 import {
@@ -11,6 +11,20 @@ import {
 } from "./types";
 
 // main ====================================================== //
+let isSpecSymbol = (matrix_keycaps, char) => {
+    if (isChar(char) || char === " ") return false;
+
+    for (let row_index = 0; row_index < matrix_keycaps.length; row_index++) {
+        let row = matrix_keycaps[row_index];
+        for (let cell_index = 0; cell_index < row.length; cell_index++) {
+            let cell = row[cell_index];
+            if (cell[1] === char) return true;
+        }
+    }
+
+    return false;
+};
+
 let getPositionKeycap: getPositionKeycapType = (
     matrix, keycap
 ) => {
@@ -19,7 +33,7 @@ let getPositionKeycap: getPositionKeycapType = (
         let row = matrix[row_index];
         for (let cell_index = 0; cell_index < row.length; cell_index++) {
             let cell = row[cell_index];
-            let value = isChar(keycap.key) ?keycap.key.toUpperCase() : keycap.key;
+            let value = isChar(keycap.key) ? keycap.key.toUpperCase() : keycap.key;
             if (cell.includes(value)) {
                 if (isFirst) return [row_index, cell_index];
                 else isFirst = true;
@@ -56,7 +70,8 @@ let getCurrentKeycaps: getCurrentKeycapsType = (
     let keycap_element = getKeycapRef(keyboardRef, matrix_keycaps, keycap);
 
     let additional_keycap_element;
-    if (isUpperCase(char)) {
+    console.log();
+    if (isUpperCase(char) || isSpecSymbol(matrix_keycaps, char)) {
         let [x_pos_keycap, y_pos_keycap] = getPositionKeycap(matrix_keycaps, keycap)!;
         additional_keycap_element = getKeycapRef(
             keyboardRef,
