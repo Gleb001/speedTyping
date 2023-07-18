@@ -12,7 +12,7 @@
 для начинающих, цветовые схемы). Если у тебя есть желание доработать данный проект, 
 буду только рад (только поддерживай стиль кода)!
 
-Потренироваться в скорости печати можно по ссылке: https://gleb001.github.io/speedTyping/demo/
+Потренироваться в скорости печати можно по ссылке: https://gleb001.github.io/speedTyping/frontend/demo/
 
 ## Что-то еще?
 Архитектура данного веб-приложения построена в соответствии с
@@ -25,7 +25,7 @@ minimum of functions, however, it needs certain features (e.g., multilingual, ex
 for beginners, color schemes). If you have a desire to finalize this project, 
 I will be only glad (just support the code style)!
 
-To practice printing speed, follow the link: https://gleb001.github.io/speedTyping/demo/
+To practice printing speed, follow the link: https://gleb001.github.io/speedTyping/frontend/demo/
 
 ## Something else?
 The architecture of this web application is built in accordance with
