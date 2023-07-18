@@ -5,7 +5,7 @@ import withAPIType from "./types";
 // Data Base URL
 // const DB_URL = "http://localhost:8000/speedTyping/backend/withDataBase/api";
 // Build-in data
-const BUILDIN_DATA_URL = "https://gleb001.github.io/speedTyping/backend/withBuildIn";
+const BUILDIN_DATA_URL = "https://gleb001.github.io/speedTyping/backend/withBuildIn/data/texts.json";
 
 // main ====================================================== //
 const withAPI: withAPIType = async function (path, options) {
