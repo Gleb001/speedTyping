@@ -15,7 +15,7 @@
 Потренироваться в скорости печати можно по ссылке: https://gleb001.github.io/speedTyping/demo/
 
 ## Что-то еще?
-Архитектура данного веб-приложения полность построена в соответствии с
+Архитектура данного веб-приложения построена в соответствии с
 [FSD-архитектурой](https://feature-sliced.design/ru/).
 
 # Speed Typing (en)
@@ -28,5 +28,5 @@ I will be only glad (just support the code style)!
 To practice printing speed, follow the link: https://gleb001.github.io/speedTyping/demo/
 
 ## Something else?
-The architecture of this web application is completely built in accordance with
+The architecture of this web application is built in accordance with
 [FSD-architecture](https://feature-sliced.design/).
