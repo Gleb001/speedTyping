@@ -41,7 +41,7 @@ let Speedometer: SpeedometerType = ({
 
     return (
         <span
-            className="speedometer main_component"
+            className="speedometer"
             style={{borderColor: getStyleOn(color)}}
         >{current + " " + measurement}</span>
     );

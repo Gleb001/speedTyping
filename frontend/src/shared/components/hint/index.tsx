@@ -1,14 +1,14 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Children } from "react";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
 import {HintContainerType} from "./types";
 
 // main ====================================================== //
-let HintContainer: HintContainerType = ({
-    description
-}, children: JSX.Element[]) => {
+let HintContainer = ({
+    description, children
+}) => {
 
     let hintRef = useRef<HTMLDivElement>(null);
     let [hasDescription, setHasDescription] = useState(false);
@@ -74,8 +74,14 @@ let HintContainer: HintContainerType = ({
             }}
             onMouseLeave={handleMouseLeave}
 
-        >{...children}</div>
+        >{
+            Children.map(
+                children,
+                (child, index) => index === 0 ? child : ""
+            )
+        }</div>
     );
+
 };
 
 // export ==================================================== //

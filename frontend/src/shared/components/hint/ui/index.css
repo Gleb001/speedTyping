@@ -1,7 +1,16 @@
+/* main ====================================================== */
+/* hint container -------------------------------------------- */
 .hint_container {
+
+    cursor: default;
     
-    font-family: "Roboto";
-    font-weight: 300;
+    display: inline-block;
+
+    background-color: var(--primary-additional-color);
+    border: 1px solid var(--secondary-additional-color);
+    border-radius: 20px;
+
+    transition: border .7s linear;
 
     position: relative;
     --top-position:  0px;
@@ -10,11 +19,28 @@
     --description-value: ;
 
 }
-
 .hint_container:hover {
     border: 1px solid var(--secondary-color);
 }
 
+/* childrens ------------------------------------------------- */
+.hint_container > * {
+
+    font-family: "Roboto";
+    font-weight: 300;
+    color: var(--secondary-color);
+
+    display: inline-block;
+
+    border-radius: inherit;
+    border-color: inherit;
+    background: transparent;
+
+    padding: 8px 15px;
+
+}
+
+/* hint ------------------------------------------------------ */
 .hint_container:before {
 
     content: var(--description-value);

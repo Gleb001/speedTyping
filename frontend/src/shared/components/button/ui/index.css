@@ -3,41 +3,7 @@
 
     cursor: pointer;
 
-    font-family: "Roboto";
-    font-weight: 300;
-
-    position: relative;
-    --top-position:  0px;
-    --left-position: 0px;
-
-    --description-value: ;
-
-}
-.special_button:hover {
-    border: 1px solid var(--secondary-color);
-}
-
-.special_button:before {
-
-    content: var(--description-value);
-
-    display: inline-block;
-    width: max-content;
-    height: max-content;
-
-    background-color: var(--primary-additional-color);
-    border: 1px solid var(--secondary-additional-color);
-
-    font-size: 1em;
-    color: var(--secondary-color);
-
-    position: absolute;
-    left: var(--left-position);
-    top: var(--top-position);
-    
-    z-index: 5;
-
-    box-sizing: border-box;
-    padding: 5px;
+    outline: none;
+    border: none;
 
 }

@@ -1,9 +1,10 @@
 // imports =================================================== //
-import { FC } from "react";
+import React, { FC } from "react";
 
 // main ====================================================== //
 type HintContainerType = FC<{
-    description: string
+    description: string,
+    children: [React.ReactNode]
 }>
 
 // export ==================================================== //

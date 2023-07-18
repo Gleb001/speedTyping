@@ -3,9 +3,9 @@
     align-items: center;
 }
 
-.button_container button:nth-child(n) {
+.button_container > * {
     margin-right: 5px;
 }
-.button_container button:last-child {
+.button_container:last-child {
     margin-right: 0;
 }

@@ -38,11 +38,6 @@ let ButtonShowKeyboard: ButtonShowKeyboardType = ({ }) => {
 
     return (
         <Button
-            description={
-                hasKeyboard ?
-                    "hide keyboard" :
-                    "show keyboard"
-            }
             icon_className={
                 hasKeyboard ?
                     "keyboard_closure_icon" :

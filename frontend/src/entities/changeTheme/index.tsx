@@ -27,7 +27,6 @@ let ButtonChangeTheme: ButtonChangeThemeType = ({ }) => {
 
     return (
         <Button
-            description="change theme"
             icon_className={
                 isLightTheme ?
                     "light_theme_icon" :
