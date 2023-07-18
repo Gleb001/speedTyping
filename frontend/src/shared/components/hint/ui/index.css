@@ -6,21 +6,12 @@
     
     display: inline-block;
 
-    background-color: var(--primary-additional-color);
-    border: 1px solid var(--secondary-additional-color);
-    border-radius: 20px;
-
-    transition: border .7s linear;
-
     position: relative;
     --top-position:  0px;
     --left-position: 0px;
 
     --description-value: ;
 
-}
-.hint_container:hover {
-    border: 1px solid var(--secondary-color);
 }
 
 /* childrens ------------------------------------------------- */
@@ -32,12 +23,17 @@
 
     display: inline-block;
 
-    border-radius: inherit;
-    border-color: inherit;
-    background: transparent;
+    background-color: var(--primary-additional-color);
+    border: 1px solid var(--secondary-additional-color);
+    border-radius: 20px;
 
     padding: 8px 15px;
 
+    transition: border .7s linear;
+
+}
+.hint_container > *:hover {
+    border: 1px solid var(--secondary-color);
 }
 
 /* hint ------------------------------------------------------ */
