@@ -11,7 +11,7 @@ import withAPI from "@shared/libs/withAPI";
 // );
 // with build-in data ---------------------------------------- //
 let getTextsTyping = async () => (
-    await withAPI<string>("")
+    await withAPI<string>("data/texts.json")
 )
 
 // export ==================================================== //
