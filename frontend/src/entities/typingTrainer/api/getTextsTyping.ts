@@ -2,7 +2,7 @@
 import withAPI from "@shared/libs/withAPI";
 
 // constants ================================================= //
-const TEXTS_TYPING_URL = "/texts_typing/get.php";
+// const TEXTS_TYPING_URL = "/texts_typing/get.php";
 
 // main ====================================================== //
 // with data base -------------------------------------------- //
@@ -11,7 +11,7 @@ const TEXTS_TYPING_URL = "/texts_typing/get.php";
 // );
 // with build-in data ---------------------------------------- //
 let getTextsTyping = async () => (
-    await withAPI<string>("/index.php")
+    await withAPI<string>("")
 )
 
 // export ==================================================== //
