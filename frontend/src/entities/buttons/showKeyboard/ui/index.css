@@ -1,0 +1,48 @@
+/* main ====================================================== */
+/* button show keyboard -------------------------------------- */
+#button_show_keyboard {
+    margin: 10px 5px;
+}
+
+/* keyboard closure icon ------------------------------------- */
+.keyboard_closure_icon {
+
+    width: 30px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+.keyboard_closure_icon::before,
+.keyboard_closure_icon::after {
+
+    background-color: var(--secondary-color);
+
+    width: 50%;
+    height: 1px;
+
+    content: "";
+    position: absolute;
+    left: 25%;
+
+}
+.keyboard_closure_icon::before {
+    transform: rotate(45deg);
+}
+.keyboard_closure_icon::after {
+    transform: rotate(-45deg);
+}
+
+/* keyboard opening icon ------------------------------------- */
+.keyboard_opening_icon {
+
+    width: 40px;
+    height: 20px;
+
+    background: var(--icon-keyboard);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}

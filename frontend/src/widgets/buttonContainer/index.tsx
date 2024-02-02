@@ -4,12 +4,13 @@ import React from "react";
 // hooks ----------------------------------------------------- //
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // components ------------------------------------------------ //
-import ButtonChangeTheme from "@entities/changeTheme";
-import ButtonShowKeyboard from "@entities/buttonShowKeyboard";
+import ButtonChangeTheme from "@entities/buttons/changeTheme";
+import ButtonShowKeyboard from "@entities/buttons/showKeyboard";
 import HintContainer from "@shared/components/hint";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
-import { ButtonContainerType } from "./types";
+import { ButtonContainerType } from "./types/index";
+import ButtonOpenSettings from "@entities/buttons/switchSettings";
 
 // main ====================================================== //
 let ButtonContainer: ButtonContainerType = ({ }) => {
@@ -21,12 +22,13 @@ let ButtonContainer: ButtonContainerType = ({ }) => {
         <div className="button_container">
             <HintContainer description={description_button_keyboard}>
                 <ButtonShowKeyboard />
-                <ButtonShowKeyboard />
-                <ButtonShowKeyboard />
             </HintContainer>
-            <HintContainer description="change theme">
+            <HintContainer description="Настройки">
+                <ButtonOpenSettings />
+            </HintContainer>
+            {/* <HintContainer description="change theme">
                 <ButtonChangeTheme />
-            </HintContainer>
+            </HintContainer> */}
         </div>
     );
 

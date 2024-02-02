@@ -1,0 +1,56 @@
+/* main settings */
+.settings {
+
+    width: 600px;
+
+    overflow: hidden;
+    border-radius: 15px;
+    
+    border:1px solid var(--secondary-additional-color);
+
+    position: absolute;
+
+}
+
+/* header settings */
+.header_settings {
+
+    width: 100%;
+
+    background-color: var(--primary-additional-color);
+
+    border-bottom:1px solid var(--secondary-additional-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 10px 15px;
+
+}
+
+/* list settings */
+.list_settings {
+
+    background-color: var(--primary-color);
+
+    box-sizing: border-box;
+    padding: 5px 15px;
+
+}
+
+/* setting */
+.setting {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 15px 0;
+
+}
+.setting:not(:last-child) {
+    border-bottom: 1px solid var(--secondary-additional-color);
+}

@@ -9,12 +9,14 @@ const BUILDIN_DATA_URL = "https://gleb001.github.io/speedTyping/backend/withBuil
 
 // main ====================================================== //
 const withAPI: withAPIType = async function (path, options) {
-    return await fetch(BUILDIN_DATA_URL + path, options)
-        .then(response => {
-            if (response.ok) return response.json();
-            else throw new Error();
-        })
-        .catch(error => console.log(error));
+    return await (
+        fetch(BUILDIN_DATA_URL + path, options)
+            .then(response => {
+                if (response.ok) return response.json();
+                else throw new Error();
+            })
+            .catch(error => console.log(error))
+    )
 };
 
 // export ==================================================== //

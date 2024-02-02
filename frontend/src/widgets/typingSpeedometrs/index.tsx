@@ -2,12 +2,12 @@
 // react ----------------------------------------------------- //
 import React from "react";
 // components ------------------------------------------------ //
-import TypingSpeedometer from "@entities/typingSpeedometer";
-import ErrorSpeedometer from "@entities/errorSpeedometer";
+import TypingSpeedometer from "@entities/indicators/typingSpeedometer";
+import ErrorSpeedometer from "@entities/indicators/errorSpeedometer";
 import HintContainer from "@shared/components/hint";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
-import { ContainerSpeedometersType } from "./types";
+import { ContainerSpeedometersType } from "./types/index";
 
 // main ====================================================== //
 let ContainerSpeedometers: ContainerSpeedometersType = ({ }) => (

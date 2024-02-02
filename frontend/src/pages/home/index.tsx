@@ -11,24 +11,30 @@ import ToolLine from "@widgets/toolLine";
 import getKeyboard from "@shared/constants/keyboards";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
-import { HomePageType } from "./types";
+import { HomePageType } from "./types/index";
+import Settings from "@entities/settings";
 
 // main ====================================================== //
 let HomePage: HomePageType = ({ }) => {
 
-    let hasKeyboard = useAppSelector(state => state.keyboard_data.has)
+    const hasKeyboard = useAppSelector(state => state.keyboard_data.has);
+    const isOpen = useAppSelector(state => state.settings.isOpen);
+    const keyboard_layout = useAppSelector(state => state.settings.keyboard_layout!);
+    const language = useAppSelector(state => state.settings.language!);
+
+    const matrix_keycaps = getKeyboard(keyboard_layout, language);
 
     return (
-        <div id="home_page">
-            <TypingTrainer />
-            <ToolLine />
-            {
-                hasKeyboard ?
-                    <Keyboard
-                        matrix_keycaps={getKeyboard("ansi", "english")}
-                    /> : ""
-            }
-        </div >
+        <>
+            <div id="home_page">
+                <TypingTrainer />
+                <ToolLine />
+                {
+                    hasKeyboard && <Keyboard matrix_keycaps={matrix_keycaps} />
+                }
+            </div>
+            { isOpen && <Settings /> }
+        </>
     );
 
 };

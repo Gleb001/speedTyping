@@ -5,12 +5,12 @@ import React from "react";
 import Routing from "@pages/index";
 // providers ------------------------------------------------- //
 import AppProviders from "./providers";
-// tests in browser's console -------------------------------- //
-// import "@shared/helpers/index.test";
-// import "@shared/libs/index.test";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
 import { AppType } from "./types";
+// tests in browser's console -------------------------------- //
+// import "@shared/helpers/index.test";
+// import "@shared/libs/index.test";
 
 // main ====================================================== //
 let App: AppType = ({}) => AppProviders(() => <Routing />);

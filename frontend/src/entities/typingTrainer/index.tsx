@@ -20,29 +20,38 @@ import {
     DisabledTextType,
     TextTypingRefType,
     TypingTrainerType,
-} from "./types";
+} from "./types/index";
+import getRandomNumber from "@shared/helpers/getRandomNumber";
+import { Languages } from "@shared/constants/keyboards";
 
 // main ====================================================== //
 let TypingTrainer: TypingTrainerType = ({ }) => {
 
     let dispatch = useAppDispatch();
     let hasKeyboard = useAppSelector(state => state.keyboard_data.has);
+    const language = useAppSelector(state => state.settings.language!);
+    let CurrentLanguageRef = useRef<Languages>(language);
 
     let textTypingRef = useRef<TextTypingRefType>(null);
     let [disabled_text, setDisabledText] = useState<DisabledTextType[]>([]);
     let [active_text, setActiveText] = useState("");
 
     useEffect(() => {
+
         let isGetActiveText = (active_text === "");
         if (
             isGetActiveText ||
-            isResetTextTyping(textTypingRef.current)
+            isResetTextTyping(textTypingRef.current) ||
+            CurrentLanguageRef.current !== language
         ) {
 
-            if (isGetActiveText) {
-                getTextsTyping().then(result => {
-                    setActiveText(result[0]);
-                    if (hasKeyboard) dispatch(set_current_char(result[0][0]));
+            if (isGetActiveText || CurrentLanguageRef.current !== language) {
+                CurrentLanguageRef.current = language;
+                getTextsTyping(language).then((texts) => {
+                    const random = getRandomNumber(0, texts.length - 1);
+                    const current_text = texts[random];
+                    setActiveText(current_text);
+                    if (hasKeyboard) dispatch(set_current_char(current_text[0]));
                 });
             }
 
@@ -51,7 +60,7 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
             dispatch(reset_point());
 
         }
-    }, [active_text]);
+    }, [active_text, language]);
 
     function updateTextTyping(hasError: boolean) {
 

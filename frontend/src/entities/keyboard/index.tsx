@@ -13,7 +13,7 @@ import {
 } from "./helpers";
 // special --------------------------------------------------- //
 import "./ui/index.css";
-import { KeyboardType } from "./types";
+import { KeyboardType } from "./types/index";
 
 // main ====================================================== //
 let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
@@ -47,8 +47,6 @@ let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
         );
     }
     function useKeyboardAssistent(){
-        console.log(current_char);
-        console.log(previous_char);
         actionOnKeycaps(
             "hide",
             keyboardRef.current,

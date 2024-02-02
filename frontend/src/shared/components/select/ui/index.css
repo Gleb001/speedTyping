@@ -1,0 +1,14 @@
+.select {
+
+    margin-left: 10px;
+
+    background-color: var(--secondary-additional-color);
+    color: var(--secondary-color);
+    border-radius: 5px;
+
+    box-sizing: border-box;
+    padding: 5px;
+    
+    cursor: pointer;
+
+}

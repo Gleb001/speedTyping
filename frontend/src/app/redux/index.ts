@@ -7,6 +7,7 @@ import inputKeycapReducer from "./reducers/keycap";
 import checkPointReducer from "./reducers/checkPoint";
 import currentCharReducer from "./reducers/currentChar";
 import mistakesCounterReducer from "./reducers/mistakesCounter";
+import SettingsSlice from "./reducers/settings";
 
 // main ====================================================== //
 let store = configureStore({
@@ -16,6 +17,7 @@ let store = configureStore({
         check_point: checkPointReducer,
         current_char: currentCharReducer,
         mistakes_counter: mistakesCounterReducer,
+        settings: SettingsSlice
     },
 });
 
