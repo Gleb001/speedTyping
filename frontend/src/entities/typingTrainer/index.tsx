@@ -29,7 +29,7 @@ let TypingTrainer: TypingTrainerType = ({ }) => {
 
     let dispatch = useAppDispatch();
     let hasKeyboard = useAppSelector(state => state.keyboard_data.has);
-    const language = useAppSelector(state => state.settings.language!);
+    let language = useAppSelector(state => state.settings.language!);
     let CurrentLanguageRef = useRef<Languages>(language);
 
     let textTypingRef = useRef<TextTypingRefType>(null);

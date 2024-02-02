@@ -12,11 +12,9 @@ import { ContainerSpeedometersType } from "./types/index";
 // main ====================================================== //
 let ContainerSpeedometers: ContainerSpeedometersType = ({ }) => (
     <div id="container_speedometers">
-        { /* @ts-ignore */ }
         <HintContainer description="percent errors">
             <ErrorSpeedometer />
         </HintContainer>
-        { /* @ts-ignore */ }
         <HintContainer description="char per minutes">
             <TypingSpeedometer />
         </HintContainer>

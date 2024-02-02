@@ -16,6 +16,7 @@ type getTextsTyping = (language: Languages) => Promise<string[]>
 // with build-in data ---------------------------------------- //
 let getTextsTyping: getTextsTyping = async (language) => {
     let all_texts = await withAPI<string[][]>("data/texts.json");
+    console.log(all_texts);
     return all_texts[language];
 }
 
