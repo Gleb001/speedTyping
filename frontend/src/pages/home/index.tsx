@@ -1,43 +1,41 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
 import React from "react";
-// redux ----------------------------------------------------- //
+// hooks ----------------------------------------------------- //
 import { useAppSelector } from "@shared/hooks/useAppSelector";
+// animations ------------------------------------------------ //
+import { animations as animation_settings } from "@entities/settings/constants/animations";
+import { animations as animationsKeyboardSimulator } from "@widgets/KeyboardSimulator/constants/animations";
 // components ------------------------------------------------ //
-import TypingTrainer from "@entities/typingTrainer";
-import Keyboard from "@entities/keyboard";
-import ToolLine from "@widgets/toolLine";
-// constants ------------------------------------------------- //
-import getKeyboard from "@shared/constants/keyboards";
-// internal -------------------------------------------------- //
-import "./ui/index.css";
-import { HomePageType } from "./types/index";
+import Animate from "@shared/components/animate";
+import KeyboardSimulator from "@widgets/KeyboardSimulator";
 import Settings from "@entities/settings";
 
 // main ====================================================== //
-let HomePage: HomePageType = ({ }) => {
+const HomePage = () => {
 
-    const hasKeyboard = useAppSelector(state => state.keyboard_data.has);
-    const isOpen = useAppSelector(state => state.settings.isOpen);
-    const keyboard_layout = useAppSelector(state => state.settings.keyboard_layout!);
-    const language = useAppSelector(state => state.settings.language!);
-
-    const matrix_keycaps = getKeyboard(keyboard_layout, language);
+    const hasSettings = useAppSelector(state => state.settings.isOpen!);
 
     return (
-        <>
-            <div id="home_page">
-                <TypingTrainer />
-                <ToolLine />
-                {
-                    hasKeyboard && <Keyboard matrix_keycaps={matrix_keycaps} />
-                }
-            </div>
-            { isOpen && <Settings /> }
-        </>
+        <div className="home_page">
+            <Animate
+                has={!hasSettings}
+                onShow={animationsKeyboardSimulator.show}
+                onHide={animationsKeyboardSimulator.hide}
+            >
+                <KeyboardSimulator />
+            </Animate>
+            <Animate
+                has={hasSettings}
+                onShow={animation_settings.show}
+                onHide={animation_settings.hide}
+            >
+                <Settings />
+            </Animate>
+        </div>
     );
 
-};
+}
 
 // export ==================================================== //
 export default HomePage;

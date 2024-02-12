@@ -1,8 +1,8 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 // helpers --------------------------------------------------- //
-import {getPercent} from "@shared/helpers/maths";
+import { getPercent } from "@shared/helpers/maths";
 // redux ----------------------------------------------------- //
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 // components ------------------------------------------------ //
@@ -14,30 +14,19 @@ import { ErrorSpeedometerType } from "./types/index";
 // main ====================================================== //
 let ErrorSpeedometer: ErrorSpeedometerType = ({ }) => {
 
-    let check_point = useAppSelector(state => state.check_point);
-    let mistakes_counter = useAppSelector(state => state.mistakes_counter);
+    const charsCounter = useAppSelector(state => state.counters.chars);
+    const mistakesCounter = useAppSelector(state => state.counters.mistakes);
 
-    function getValue(type: "current" | "previous") {
-        return getPercent(
-            mistakes_counter[type],
-            check_point[type] === 0 ? 1 : check_point[type],
-            1
-        );
-    }
+    const total = (charsCounter === 0 ? 1 : charsCounter);
+    const value = getPercent(mistakesCounter, total, 1);
+    const status = (charsCounter === 0 ? "fix" : "translation");
 
     return (
         <Speedometer
+            value={value}
+            status={status}
+            onIndicate={(previous, current) => previous > current}
             measurement="%"
-            current={
-                check_point.current === 0 ?
-                    getValue("previous") :
-                    getValue("current")
-            }
-            type={
-                check_point.current === 0 ?
-                    "decrease" :
-                    "none"
-            }
         />
     );
 

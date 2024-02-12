@@ -9,6 +9,7 @@
     border:1px solid var(--secondary-additional-color);
 
     position: absolute;
+    z-index: 5;
 
 }
 

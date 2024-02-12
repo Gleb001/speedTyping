@@ -1,5 +1,5 @@
 // imports ================================================== //
-import { TypesKeyboards } from "@shared/constants/keyboards";
+import { TypesKeyboards } from "@widgets/KeyboardSimulator/constants/keyboards";
 
 // main ===================================================== //
 const DATA: TypesKeyboards[] = [

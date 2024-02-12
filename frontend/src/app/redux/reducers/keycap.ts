@@ -1,44 +1,42 @@
 // imports =================================================== //
+import { Keycap } from "@entities/keyboard/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 // types ===================================================== //
-type setActionType = PayloadAction<
-    [keyof initialStateType, keycapType]
->
-type keycapType = {
-    key: KeyboardEvent["key"] | "",
-    isFirst: boolean
+interface InitialState {
+    down: string,
+    up: string,
+    active: Keycap | [],
 }
-type initialStateType = {
-    "down": keycapType,
-    "up": keycapType,
+interface setAction {
+    down?: string,
+    up?: string,
+    active?: Keycap | [],
 }
 
 // constants ================================================= //
-const initialState: initialStateType = {
-    "down": {
-        key: "",
-        isFirst: false
-    },
-    "up": {
-        key: "",
-        isFirst: false
-    }
+const initialState: InitialState = {
+    active: [],
+    down: "",
+    up: ""
 };
 
 // main ====================================================== //
-let currentSymbolSlice = createSlice({
-    name: "keycap",
+let keycapsSlice = createSlice({
+    name: "keycaps",
     initialState,
     reducers: {
-        set: (state, action: setActionType) => {
-            state[action.payload[0]] = action.payload[1];
+        set: (state, action: PayloadAction<setAction>) => {
+            for (let key in action.payload) {
+                if (typeof state[key] !== undefined) {
+                    state[key] = action.payload[key];
+                }
+            }
         },
     }
 });
 
 // export ==================================================== //
-export { currentSymbolSlice };
-export let { set } = currentSymbolSlice.actions;
-export default currentSymbolSlice.reducer;
-export type {keycapType, initialStateType};
+export { keycapsSlice };
+export let { set } = keycapsSlice.actions;
+export default keycapsSlice.reducer;

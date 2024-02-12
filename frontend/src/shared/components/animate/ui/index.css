@@ -1,0 +1,7 @@
+.animation_container {
+    display: inline-block;
+}
+
+.animation_container:has(div) {
+    display: block;
+}

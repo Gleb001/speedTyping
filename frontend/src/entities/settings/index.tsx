@@ -4,15 +4,14 @@ import { AnimationJS } from "moveton";
 // react ----------------------------------------------------- //
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 // components ------------------------------------------------ //
-import SwitchVisibilitySettings from "@entities/buttons/switchSettings"
-// internal -------------------------------------------------- //
-import { SettingsType } from "./types";
-import "./ui/index.css";
+import SwitchVisibilitySettings from "@entities/buttons/switchSettings";
 import Select from "@shared/components/select";
+// internal -------------------------------------------------- //
+import "./ui/index.css";
 import DATA from "./constants/data";
 
 // main ====================================================== //
-let Settings: SettingsType = () => {
+const Settings = () => {
 
     const SettingsRef = useRef<HTMLDivElement | null>(null);
     let [selected, setSelected] = useState<string>(DATA[0].text);
@@ -22,39 +21,9 @@ let Settings: SettingsType = () => {
     }
 
     useEffect(() => {
-
-        // animation show
-        let heightWindow = window.innerHeight;
         let widthWindow = window.innerWidth;
-        let centerHeight = Math.floor((heightWindow - SettingsRef.current!.offsetHeight) / 2);
-        let centerWidth = Math.floor((widthWindow - SettingsRef.current!.offsetWidth) / 2);
-
+        let centerWidth = (widthWindow - SettingsRef.current!.offsetWidth) / 2;
         SettingsRef.current!.style.left = `${centerWidth}px`;
-        let show_animation = new AnimationJS(
-            [SettingsRef.current!],
-            {
-                top: `${heightWindow} -> ${centerHeight}px`
-            }
-        );
-
-        show_animation.start("linear", 1000);
-
-    }, []);
-    useLayoutEffect(() => {
-        return () => {
-            
-            let heightWindow = window.innerHeight;
-            let centerHeight = Math.floor((heightWindow - SettingsRef.current!.offsetHeight) / 2);
-
-            let hide_animation = new AnimationJS(
-                [SettingsRef.current!],
-                {
-                    top: `${centerHeight} -> ${heightWindow}px`
-                }
-            );
-            hide_animation.start("linear", 1000);
-
-        };
     }, []);
 
     return (

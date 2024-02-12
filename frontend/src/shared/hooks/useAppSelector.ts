@@ -1,12 +1,12 @@
 // imports =================================================== //
 import { useSelector, TypedUseSelectorHook } from "react-redux";
-import { RootStore } from "../../app/redux/types";
+import type { RootStore } from "../../app/redux/types";
 
 // types ===================================================== //
-type useAppSelectorType = TypedUseSelectorHook<RootStore>
+type useAppSelector = TypedUseSelectorHook<RootStore>
 
 // constants ================================================= //
-const useAppSelector: useAppSelectorType = useSelector;
+const useAppSelector: useAppSelector = useSelector;
 
 // export ==================================================== //
 export { useAppSelector };

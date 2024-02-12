@@ -1,0 +1,14 @@
+/* main ====================================================== */
+.typing_trainer {
+
+    width: 100%;
+    margin: 5px 0;
+
+    font-size: 1.25em;
+    font-family: "Roboto";
+    font-weight: 300;
+
+    box-sizing: border-box;
+    padding: 0 50px;
+
+}

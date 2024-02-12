@@ -1,6 +1,6 @@
 // imports =================================================== //
 import { LinkList } from "@shared/libs/linkList";
-import isEqual from "@shared/helpers/isEqual";
+import isEqual from "@shared/helpers/booleans/isEqual";
 
 // main ====================================================== //
 

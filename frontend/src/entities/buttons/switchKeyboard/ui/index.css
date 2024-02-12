@@ -1,0 +1,17 @@
+/* main ====================================================== */
+#button_show_keyboard {
+    margin: 10px 5px;
+}
+
+/* keyboard opening icon ------------------------------------- */
+.open_keyboard_icon {
+
+    display: block;
+    width: 40px;
+    height: 20px;
+
+    background-image: var(--icon-keyboard);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}

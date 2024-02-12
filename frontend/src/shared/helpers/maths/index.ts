@@ -8,12 +8,22 @@ const getPercent = (
 };
 const range = (
     value: number, start: number, end: number,
-) => {
-    return start > end   ? NaN   :
-           value > end   ? end   :
-           value < start ? start :
-           value;
-}
+) => (
+    start > end   ? NaN   :
+    value > end   ? end   :
+    value < start ? start :
+    value
+)
+const getRandom = (
+    min: number, max: number
+) => (
+    Math.floor(
+        Math.random() * (max - min) + min
+    )
+);
+const getSpeed = (distance: number, time: number) => (
+    time === 0 ? 0 : distance / time
+);
 
 // export ==================================================== //
-export {getPercent, range};
+export { getPercent, range, getRandom, getSpeed };

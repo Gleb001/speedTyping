@@ -10,6 +10,7 @@ const PATHS = {
     "@shared":   SRC_PATH + "/shared",
     "@widgets":  SRC_PATH + "/widgets",
     "@entities": SRC_PATH + "/entities",
+    "@features": SRC_PATH + "/features"
     // "@components": SRC_PATH + "./src/shared/components",
     // "@libs": SRC_PATH + "./src/shared/libs",
     // "@helpers": SRC_PATH + "./src/shared/helpers",

@@ -1,0 +1,51 @@
+/* main ===================================================== */
+.text_typing {
+
+    border-top: 1px solid;
+
+    display: block;
+    height: 4.8em;
+    width: 100%;
+
+    margin: 2px 0;
+
+    overflow: clip;
+    overflow-clip-margin: 1px;
+
+    line-height: 1.55em;
+
+}
+.text_typing span {
+    display: inline;
+    position: relative;
+}
+
+/* active text ---------------------------------------------- */
+.active {
+    color: var(--secondary-color);
+}
+
+/* disabled text -------------------------------------------- */
+.disable {
+    color: var(--secondary-additional-color);
+}
+.disable:before {
+    background-color: var(--secondary-additional-color);
+}
+
+/* error text ----------------------------------------------- */
+.wrong {
+    color: var(--mistake-color);
+}
+.wrong:before {
+    background-color: var(--mistake-color);
+}
+
+.wrong::before,
+.disable::before {
+    content: "";
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: -4px;
+}

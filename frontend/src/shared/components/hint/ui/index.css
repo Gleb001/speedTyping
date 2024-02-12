@@ -1,63 +1,41 @@
 /* main ====================================================== */
-/* hint container -------------------------------------------- */
-.hint_container {
-
-    cursor: default;
-    
+.target_element {
     display: inline-block;
-
-    position: relative;
-    --top-position:  0px;
-    --left-position: 0px;
-
-    --description-value: ;
-
 }
 
-/* childrens ------------------------------------------------- */
-.hint_container > * {
-
-    font-family: "Roboto";
-    font-weight: 300;
-    color: var(--secondary-color);
-
-    display: inline-block;
-
-    background-color: var(--primary-additional-color);
-    border: 1px solid var(--secondary-additional-color);
-    border-radius: 20px;
-
-    padding: 8px 15px;
-
-    transition: border .7s linear;
-
+/* child element --------------------------------------------- */
+.target_element > * {
+    transition: border-color .4s ease-in;
 }
-.hint_container > *:hover {
-    border: 1px solid var(--secondary-color);
+.target_element > *:hover {
+    border-color: var(--secondary-color);
 }
 
 /* hint ------------------------------------------------------ */
-.hint_container:before {
-
-    content: var(--description-value);
+.hint {
 
     display: inline-block;
-    width: max-content;
-    height: max-content;
+    max-width: 200px;
+    min-width: 100px;
 
     background-color: var(--primary-additional-color);
     border: 1px solid var(--secondary-additional-color);
-
-    font-size: 1em;
-    color: var(--secondary-color);
-
-    position: absolute;
-    left: var(--left-position);
-    top: var(--top-position);
-    
-    z-index: 5;
+    border-radius: 10px;
 
     box-sizing: border-box;
-    padding: 5px;
+    padding: 10px;
 
+    text-align: center;
+    color: var(--secondary-color);
+
+    opacity: 0;
+
+    z-index: 2;
+
+    position: absolute;
+
+}
+.triangle {
+    border: 10px solid transparent;
+    position: absolute;
 }

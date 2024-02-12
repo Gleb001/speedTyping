@@ -1,9 +1,25 @@
 /* main ====================================================== */
 .special_button {
+    
+    font-family: "Roboto";
+    font-weight: 300;
+    color: var(--secondary-color);
+
+    display: inline-block;
+
+    background-color: var(--primary-additional-color);
+    border: 1px solid var(--secondary-additional-color);
+    border-radius: 20px;
+    outline: none;
+
+    padding: 8px 15px;
+
+    transition: border .7s linear;
 
     cursor: pointer;
 
-    outline: none;
-    border: none;
+}
 
+.special_button:hover {
+    border: 1px solid var(--secondary-color);
 }

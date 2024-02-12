@@ -1,6 +1,6 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
-import React from "react";
+import React, { useState } from "react";
 // internal -------------------------------------------------- //
 import { SwitchVisibilitySettingsType } from "./types";
 import { useAppDispatch } from "@shared/hooks/useAppDispatch";
@@ -11,21 +11,23 @@ import { useAppSelector } from "@shared/hooks/useAppSelector";
 // main ====================================================== //
 let SwitchVisibilitySettings: SwitchVisibilitySettingsType = () => {
 
-    let dispatch = useAppDispatch();
-    let isOpen = useAppSelector((state) => state.settings.isOpen);
+    const dispatch = useAppDispatch();
+    const isOpen = useAppSelector((state) => state.settings.isOpen);
+    let [hasClick, setHasClick] = useState(false);
 
     function handleClick() {
-        dispatch(
-            setSettings({ isOpen: !isOpen })
-        );
+        if (!hasClick) {
+            setHasClick(true);
+            dispatch(
+                setSettings({ isOpen: !isOpen })
+            );
+        }
     }
 
     return (
-        <Button
-            // className="icon_settings"
-            onClick={handleClick}
-            name={isOpen ? "X" : "Настройки"}
-        />
+        <Button onClick={handleClick}>
+            {isOpen ? "✕" : "Настройки"}
+        </Button>
     );
 
 };

@@ -1,88 +1,65 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
-import React, { useState, useRef, useEffect, Children } from "react";
+import React, { useState, useRef, MouseEvent } from "react";
 // internal -------------------------------------------------- //
 import "./ui/index.css";
-import {HintContainerType} from "./types";
+import type { HintType } from "./types";
+import Animate from "../animate";
+import { animations } from "./constants/animations";
 
 // main ====================================================== //
-let HintContainer = ({
-    description, children
-}) => {
+const Hint: HintType = ({ description, children }) => {
 
-    let hintRef = useRef<HTMLDivElement>(null);
-    let [hasDescription, setHasDescription] = useState(false);
-    let [timeoutRef, setTimeoutRef] = useState<NodeJS.Timeout | null>(null);
+    let HintRef = useRef<HTMLDivElement>(null);
+    let TriangleHintRef = useRef<HTMLSpanElement>(null);
+    let TargetElementRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (!hintRef.current || !description) return;
-        hintRef.current.style.setProperty(
-            "--description-value",
-            hasDescription ? `"${description}"` : ""
+    let TimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    let [hasHint, setHasHint] = useState(false);
+
+    function handleMouseEnter() {
+        TimeoutRef.current = setTimeout(
+            () => {
+                setHasHint(true);
+                TimeoutRef.current = null;
+            },
+            500
         );
-    }, [hasDescription]);
-
+    }
     function handleMouseLeave() {
-        setHasDescription(false);
-        if (timeoutRef) {
-            clearTimeout(timeoutRef);
-            setTimeoutRef(null);
-        }
-    }
-    function handleMouseMove(event: React.MouseEvent) {
-        if (hintRef.current && hasDescription) {
 
-            let beforeRef = window.getComputedStyle(hintRef.current, ":before");
-            let button_position = hintRef.current.getBoundingClientRect();
-
-            let isHandleLeave = (
-                event.clientX - button_position.x > button_position.width ||
-                event.clientX - button_position.x < 0 ||
-                event.clientY - button_position.y > button_position.height ||
-                event.clientY - button_position.y < 0
-            );
-            if (isHandleLeave) setHasDescription(false);
-
-            let height_description = Number(beforeRef.height.slice(0, -2));
-            let width_description = Number(beforeRef.height.slice(0, -2));
-            hintRef.current.style.setProperty(
-                "--top-position",
-                event.clientY - button_position.y - height_description - 5 + "px"
-            );
-            hintRef.current.style.setProperty(
-                "--left-position",
-                event.clientX - button_position.x - width_description - 5 + "px"
-            );
+        setHasHint(false);
+        if (TimeoutRef.current !== null) {
+            clearTimeout(TimeoutRef.current);
+            TimeoutRef.current = null;
         }
-    }
-    function timeoutCursorHold() {
-        if (!timeoutRef) {
-            setTimeoutRef(
-                setTimeout(() => setHasDescription(true), 700)
-            );
-        }
+
     }
 
     return (
-        <div
-            className="hint_container"
-            ref={hintRef}
-
-            onMouseMove={(event) => {
-                timeoutCursorHold();
-                handleMouseMove(event);
-            }}
-            onMouseLeave={handleMouseLeave}
-
-        >{
-            Children.map(
-                children,
-                (child, index) => index === 0 ? child : ""
-            )
-        }</div>
+        <>
+            <div
+                className="target_element"
+                ref={TargetElementRef}
+                onMouseOver={handleMouseEnter}
+                onMouseOut={handleMouseLeave}
+            >
+                {children}
+            </div>
+            <Animate
+                has={hasHint}
+                onShow={() => animations.show(TargetElementRef.current!, HintRef.current!, TriangleHintRef.current!)}
+                onHide={() => animations.hide(TargetElementRef.current!, HintRef.current!, TriangleHintRef.current!)}
+            >
+                <span ref={HintRef} className="hint">
+                    <span ref={TriangleHintRef} className="triangle"></span>
+                    <span>{description}</span>
+                </span>
+            </Animate>
+        </>
     );
 
 };
 
 // export ==================================================== //
-export default HintContainer;
+export default Hint;

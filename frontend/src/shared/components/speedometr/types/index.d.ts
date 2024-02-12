@@ -1,26 +1,15 @@
 // imports =================================================== //
-import { FC } from "react";
+import type { FC } from "react";
 
 // main ====================================================== //
-
-// simple ---------------------------------------------------- //
-type TypeSpeedometrType = "increase" | "decrease" | "none"
-
-// compose --------------------------------------------------- //
-interface ColorListType {
-    "white": "--secondary-additional-color",
-    "green": "--best-result-color",
-    "red": "--mistake-color",
-}
-type SpeedometerType = FC<{
-    current: number,
-    type: TypeSpeedometrType,
+type StatusSpeedometer = "translation" | "fix"
+interface Props {
+    value: number,
     measurement: string,
-}>
+    status: StatusSpeedometer,
+    onIndicate: (a: number, b: number) => boolean
+}
+type Speedometer = FC<Props>
 
 // export ==================================================== //
-export {
-    // compose
-    SpeedometerType,
-    ColorListType,
-};
+export type { Speedometer, Props };

@@ -1,0 +1,22 @@
+/* main ====================================================== */
+.tool_line {
+    
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 5px 0;
+
+    box-sizing: border-box;
+    padding: 0 50px;
+
+}
+
+/* container ------------------------------------------------ */
+.item_container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

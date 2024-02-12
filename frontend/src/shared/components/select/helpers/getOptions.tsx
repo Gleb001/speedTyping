@@ -1,9 +1,11 @@
 // imports ================================================== //
-import type { Data } from "../types";
+// react ----------------------------------------------------- //
 import React from "react";
+// internal -------------------------------------------------- //
+import type { Props as SelectProps } from "../types";
 
 // main ===================================================== //
-function getOptions(data: Data) {
+function getOptions(data: SelectProps["data"]) {
     return (
         <>{
             data.map((text, index) => {

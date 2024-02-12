@@ -11,9 +11,9 @@
   "author": "Gleb Li",
   "license": "ISC",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
+    "@reduxjs/toolkit": "^2.1.0",
     "html-webpack-plugin": "^5.5.3",
-    "moveton": "^1.0.7",
+    "moveton": "^1.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",

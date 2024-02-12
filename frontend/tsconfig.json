@@ -35,6 +35,7 @@
       "@shared/*":   ["src/shared/*"],
       "@widgets/*":  ["src/widgets/*"],
       "@entities/*": ["src/entities/*"],
+      "@features/*": ["src/features/*"],
       // "@components/*": ["src/shared/components/*"],
       // "@helpers/*": ["src/shared/helpers/*"],
       // "@hooks/*": ["src/shared/hooks/*"],

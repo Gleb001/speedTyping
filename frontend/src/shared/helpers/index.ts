@@ -1,9 +1,9 @@
 // imports =================================================== //
-import isEqual from "./isEqual";
+import isEqual from "./booleans/isEqual";
 import splitBy from "./splitBy";
 import convertToMinutes from "./convertToMinutes";
 import getChildHTMLElements from "./getChildHTMLElements";
-import isEmptyObject from "./isEmptyObject";
+import isEmptyObject from "./booleans/isEmptyObject";
 import { range, getPercent } from "./maths";
 import { isChar, isUpperCase } from "./withString";
 

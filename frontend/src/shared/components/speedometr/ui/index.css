@@ -1,2 +1,28 @@
 /* main ====================================================== */
-.speedometer { }
+.speedometer {
+    
+    font-family: "Roboto";
+    font-weight: 300;
+    color: var(--secondary-color);
+
+    display: inline-block;
+
+    background-color: var(--primary-additional-color);
+    border: 1px solid var(--secondary-additional-color);
+    border-radius: 20px;
+
+    padding: 8px 15px;
+
+    cursor: pointer;
+
+    transition: border-color .5s;
+
+}
+
+/* indicators ================================================ */
+.best {
+    border-color: var(--best-result-color);
+}
+.worse {
+    border-color: var(--mistake-color);
+}

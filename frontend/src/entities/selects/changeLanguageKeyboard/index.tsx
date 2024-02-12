@@ -4,7 +4,7 @@ import React from "react";
 // internal -------------------------------------------------- //
 import { ChangeLanguageKeyboardType } from "./types";
 import Select from "@shared/components/select";
-import { Languages } from "@shared/constants/keyboards";
+import { Languages } from "@widgets/KeyboardSimulator/constants/keyboards";
 import { useAppSelector } from "@shared/hooks/useAppSelector";
 import { set as setSettings } from "@app/redux/reducers/settings";
 import { useAppDispatch } from "@shared/hooks/useAppDispatch";

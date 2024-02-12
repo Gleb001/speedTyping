@@ -1,0 +1,36 @@
+/* main ===================================================== */
+.keycap {
+
+    border: 1px solid;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+
+    margin: 0 2px;
+    height: 100%;
+
+    position: relative;
+
+    transition:
+        border-color .1s linear,
+        color .1s linear;
+    
+}
+
+/* type keycap ----------------------------------------------- */
+.default_keycap {
+    border-color: var(--secondary-additional-color);
+    color: var(--secondary-additional-color);
+}
+.waiting_keycap {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+.wrong_keycap {
+    border-color: var(--mistake-color);
+    color: var(--mistake-color);
+}

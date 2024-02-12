@@ -1,85 +1,54 @@
 // imports =================================================== //
 // react ----------------------------------------------------- //
-import React, { useEffect, useState, useRef } from "react";
-// redux ----------------------------------------------------- //
-import { useAppSelector } from "@shared/hooks/useAppSelector";
+import React, { useEffect, useMemo } from "react";
+// hooks ----------------------------------------------------- //
 import { useAppDispatch } from "@shared/hooks/useAppDispatch";
-import { set as set_keycap } from "@app/redux/reducers/keycap";
+import { useAppSelector } from "@shared/hooks/useAppSelector";
+// redux ----------------------------------------------------- //
+import { set as setKeyboardData } from "@app/redux/reducers/keyboard";
 // helpers --------------------------------------------------- //
-import {
-    getKeycapRef,
-    getClassNameKeycap,
-    actionOnKeycaps
-} from "./helpers";
+import { isEqual } from "@shared/helpers";
 // special --------------------------------------------------- //
 import "./ui/index.css";
-import { KeyboardType } from "./types/index";
+import RowKeycaps from "./components/RowKeycaps";
+import getKeyboard from "./api/getKeyboard";
 
 // main ====================================================== //
-let Keyboard: KeyboardType = ({ matrix_keycaps }) => {
+const Keyboard = () => {
 
-    let dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
-    let keycap = useAppSelector(state => state.keycap);
-    let current_char = useAppSelector(state => state.current_char);
-    let height_keyboard = useAppSelector(state => state.keyboard_data.height);
+    const keyboard_layout = useAppSelector(state => state.settings.keyboard_layout!);
+    const language = useAppSelector(state => state.settings.language);
+    const matrix_keycaps = useAppSelector(state => state.keyboard.matrix_keycaps);
 
-    let keyboardRef = useRef<HTMLDivElement>(null);
-    let [previous_char, setPrevChar] = useState("");
-
-    useEffect(() => actionOnKeycap("down"), [keycap.down]);
-    useEffect(useKeyboardAssistent, [current_char]);
+    // set matris keycaps
     useEffect(() => {
-        actionOnKeycap("up");
-        dispatch(set_keycap(["down", { key: "", isFirst: false }]));
-    }, [keycap.up])
-
-    function actionOnKeycap(type: "up" | "down") {
-        let keycap_element = getKeycapRef(
-            keyboardRef.current,
-            matrix_keycaps,
-            keycap[type]
-        );
-        if (!keycap_element) return;
-
-        keycap_element.className = getClassNameKeycap(
-            type, current_char, keycap[type].key
-        );
-    }
-    function useKeyboardAssistent(){
-        actionOnKeycaps(
-            "hide",
-            keyboardRef.current,
-            matrix_keycaps,
-            previous_char,
-        );
-        actionOnKeycaps(
-            "show",
-            keyboardRef.current,
-            matrix_keycaps,
-            current_char,
-        );
-        setPrevChar(current_char);
-    }
+        const new_keyboard = getKeyboard(keyboard_layout, language);
+        const isNewKeyboard = !isEqual(new_keyboard, matrix_keycaps);
+        if (isNewKeyboard) {
+            dispatch(
+                setKeyboardData({
+                    matrix_keycaps: new_keyboard
+                })
+            );
+        }
+    }, [language, keyboard_layout]);
 
     return (
-        <div id="keyboard" ref={keyboardRef} style={{
-            height: height_keyboard + "px",
-            opacity: String(height_keyboard)
-        }}>{
-                matrix_keycaps.map((row, index) => (
-                    <div className="row_keycaps" key={`row_${index}`}>{
-                        row.map((keycaps, index) => (
-                            <div key={`cell_${index}`} className="no_active_keycap">{
-                                keycaps.join(" ")
-                            }</div>
-                        ))
-                    }</div>
-                ))
-            }</div>
+        <div id="keyboard">
+            {
+                matrix_keycaps.length !== 0 && matrix_keycaps.map(
+                    (keycaps, index) => {
+                        const key = "row_keycaps " + index;
+                        return <RowKeycaps key={key} data={keycaps} />;
+                    }
+                )
+            }
+        </div>
     );
 
-};
+}
 
 // export ==================================================== //
 export default Keyboard;

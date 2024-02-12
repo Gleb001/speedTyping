@@ -6,11 +6,12 @@ import "./ui/index.css";
 import type { ButtonType } from "./types";
 
 // main ====================================================== //
-const Button: ButtonType = ({ name, icon_className, ...props }) => (
+const Button: ButtonType = ({ children, ...props }) => (
+
     <button className="special_button" {...props} >
-        <div className={icon_className + " icon_button"}></div>
-        <div>{name}</div>
+        {children}
     </button>
+    
 );
 
 // export ==================================================== //

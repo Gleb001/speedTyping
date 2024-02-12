@@ -1,18 +1,16 @@
 // imports =================================================== //
-import { FC, HTMLAttributes } from "react";
-
-// helpers =================================================== //
-type Data = string[]
+import type { FC, HTMLAttributes } from "react";
 
 // main ====================================================== //
+type Data = string[]
 interface Props {
     data: Data,
     value: string
 }
-type SelectType = FC<
+type Select = FC<
     Props &
     HTMLAttributes<HTMLSelectElement>
 >
 
 // export ==================================================== //
-export type { SelectType, Data };
+export type { Select, Props };

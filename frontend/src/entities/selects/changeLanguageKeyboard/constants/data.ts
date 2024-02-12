@@ -1,5 +1,5 @@
 // imports ================================================== //
-import { Languages } from "@shared/constants/keyboards";
+import { Languages } from "@widgets/KeyboardSimulator/constants/keyboards";
 
 // main ===================================================== //
 const DATA: Languages[] = [

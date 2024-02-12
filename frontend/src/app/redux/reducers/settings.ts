@@ -1,22 +1,31 @@
 // imports =================================================== //
-import { createSlice } from "@reduxjs/toolkit";
-import { Languages, TypesKeyboards } from "@shared/constants/keyboards";
+import { LanguagesKeyboard, TypesKeyboards } from "@entities/keyboard/types";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 // types ===================================================== //
-type ColorTheme = "light" | "dark"
+type ColorTheme = "Светлая" | "Тёмная"
 interface initialState {
-    language?: Languages,
+    language: LanguagesKeyboard,
+    keyboard_layout: TypesKeyboards,
+    color_theme: ColorTheme,
+    isOpen: boolean,
+    hasFingerStatus: boolean
+}
+interface setAction {
+    language?: LanguagesKeyboard,
     keyboard_layout?: TypesKeyboards,
     color_theme?: ColorTheme,
-    isOpen?: boolean
+    isOpen?: boolean,
+    hasFingerStatus?: boolean
 }
 
 // constants ================================================= //
 const initialState: initialState = {
     language: "english",
     keyboard_layout: "ansi",
-    color_theme: "dark",
+    color_theme: "Тёмная",
     isOpen: false,
+    hasFingerStatus: false
 };
 
 // main ====================================================== //
@@ -24,7 +33,7 @@ const SettingsSlice = createSlice({
     name: "settings",
     initialState,
     reducers: {
-        set: (state, action: { payload: initialState }) => {
+        set: (state, action: PayloadAction<setAction>) => {
             for (let key in action.payload) {
                 state[key] = action.payload[key];
             }
@@ -36,3 +45,4 @@ const SettingsSlice = createSlice({
 export { SettingsSlice };
 export let { set } = SettingsSlice.actions;
 export default SettingsSlice.reducer;
+export type { ColorTheme };

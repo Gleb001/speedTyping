@@ -1,7 +1,7 @@
 // imports ================================================== //
 import React from "react";
 import Setting from "../components/Setting";
-import ButtonChangeTheme from "@entities/buttons/changeTheme";
+import ButtonChangeTheme from "@entities/selects/changeColorTheme";
 import ChangeLanguageKeyboard from "@entities/selects/changeLanguageKeyboard";
 import ChangeLayoutKeyboard from "@entities/selects/changeLanguageKeyboard copy";
 

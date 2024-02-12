@@ -1,11 +1,14 @@
 // imports =================================================== //
-import React, { FC } from "react";
+import type { FC, ReactNode } from "react";
 
 // main ====================================================== //
-type HintContainerType = FC<{
-    description: string,
-    children: [React.ReactNode]
-}>
+interface Props {
+    description: string
+}
+type HintType = FC<
+    Props &
+    { children: ReactNode }
+>
 
 // export ==================================================== //
-export { HintContainerType };
+export type { HintType, Props };
