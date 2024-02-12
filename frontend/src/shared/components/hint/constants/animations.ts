@@ -60,8 +60,6 @@ const animations = {
         HintRef.style.left = `${getLeftPositionHint(coordinatesTargetElement, coordinatesHint)}px`;
         TriangleHintRef.style.left = `${(coordinatesHint.width / 2) - (coordinatesTriangleHint.width / 2)}px`;
 
-        console.log(property);
-
         // create animation
         const animation_show_hint = new AnimationJS(
             [HintRef],

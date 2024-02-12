@@ -22,9 +22,8 @@ const Keyboard = () => {
     const language = useAppSelector(state => state.settings.language);
     const matrix_keycaps = useAppSelector(state => state.keyboard.matrix_keycaps);
 
-    // set matris keycaps
-    useEffect(() => {
-        const new_keyboard = getKeyboard(keyboard_layout, language);
+    async function setNewKeyboard() {
+        const new_keyboard = await getKeyboard(keyboard_layout, language);
         const isNewKeyboard = !isEqual(new_keyboard, matrix_keycaps);
         if (isNewKeyboard) {
             dispatch(
@@ -33,6 +32,10 @@ const Keyboard = () => {
                 })
             );
         }
+    }
+
+    useEffect(() => {
+        setNewKeyboard();
     }, [language, keyboard_layout]);
 
     return (
