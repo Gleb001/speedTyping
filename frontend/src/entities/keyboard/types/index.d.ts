@@ -3,7 +3,7 @@ import type { FC } from "react";
 
 // main ====================================================== //
 type Keycap = [string, string] | [string]
-type LanguagesKeyboard = ("english" | "russia")
+type LanguagesKeyboard = ("english" | "russia" | "franch" | "deutsche")
 type TypesKeyboards = ("ansi")
 type MatrixKeycapsWithoutSystem = [
     Keycap[],

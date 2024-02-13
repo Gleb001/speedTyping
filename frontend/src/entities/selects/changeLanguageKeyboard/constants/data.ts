@@ -1,10 +1,12 @@
 // imports ================================================== //
-import { Languages } from "@widgets/KeyboardSimulator/constants/keyboards";
+import type { LanguagesKeyboard } from "@entities/keyboard/types";
 
 // main ===================================================== //
-const DATA: Languages[] = [
+const DATA: LanguagesKeyboard[] = [
     "english",
-    "russia"
+    "russia",
+    "franch",
+    "deutsche"
 ]
 
 // exports ================================================= //
