@@ -1,6 +1,6 @@
 // imports ================================================== //
 import { withAPI } from "@shared/libs";
-import { LanguagesKeyboard, MatrixKeycapsWithoutSystem, TypesKeyboards } from "../types";
+import { LanguagesKeyboard, MatrixKeycapsWithoutSystem, TypesKeyboards } from "../../../entities/keyboard/types";
 
 // types ==================================================== //
 type KeycapsByLanguage = {

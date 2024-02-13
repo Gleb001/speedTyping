@@ -19,7 +19,10 @@ type MatrixKeycapsWithSystem = [
     Keycap[]
 ]
 
-type Keyboard = FC
+interface Props {
+    matrix_keycaps: MatrixKeycapsWithSystem | []
+}
+type Keyboard = FC<Props>
 
 // export ==================================================== //
 export type {

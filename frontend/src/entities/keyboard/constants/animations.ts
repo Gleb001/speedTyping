@@ -12,17 +12,15 @@ function getHeightKeyboard(keyboardRef: HTMLElement) {
 const animations = {
     show(keyboardRef: HTMLElement) {
 
-        setTimeout(() => {
-            const animation_show = new AnimationJS(
-                [keyboardRef],
-                {
-                    height: `0 -> ${getHeightKeyboard(keyboardRef)} px`,
-                    opacity: "0 -> 1"
-                }
-            );
+        const animation_show = new AnimationJS(
+            [keyboardRef],
+            {
+                height: `0 -> ${getHeightKeyboard(keyboardRef)} px`,
+                opacity: "0 -> 1"
+            }
+        );
 
-            return animation_show.start("linear", 300);
-        }, 100)
+        return animation_show.start("linear", 300);
 
     },
     hide(keyboardRef: HTMLElement) {
